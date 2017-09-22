@@ -22,16 +22,19 @@ class ViewController: UIViewController, PDFDocumentDelegate {
     
     if let documentURL = Bundle.main.url(forResource: documentName, withExtension: "pdf") {
       if let document = PDFDocument(url: documentURL) {
-
         // Center document on gray background
         pdfView?.autoScales = true
         pdfView?.backgroundColor = UIColor.lightGray
+        pdfView?.usePageViewController(true, withViewOptions: nil)
 
         // 1. Set delegate
         document.delegate = self
         pdfView?.document = document
+
+        tableOfContents(document)
       }
     }
+
   }
 
   override func didReceiveMemoryWarning() {
@@ -39,6 +42,11 @@ class ViewController: UIViewController, PDFDocumentDelegate {
     // Dispose of any resources that can be recreated.
   }
 
+  // start of table of contents
+  func tableOfContents(_ document: PDFDocument) {
+    if document.outlineRoot != nil {
+    }
+  }
 
 }
 
