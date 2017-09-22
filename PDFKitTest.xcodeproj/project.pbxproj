@@ -14,6 +14,9 @@
 		52058F6A1F75B17B0082BA62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52058F681F75B17B0082BA62 /* LaunchScreen.storyboard */; };
 		52058F751F75B17B0082BA62 /* PDFKitTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52058F741F75B17B0082BA62 /* PDFKitTestTests.swift */; };
 		52058F801F75B17B0082BA62 /* PDFKitTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52058F7F1F75B17B0082BA62 /* PDFKitTestUITests.swift */; };
+		52058F901F75B24F0082BA62 /* NumberTheoryAndAlgebra.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 52058F8E1F75B24F0082BA62 /* NumberTheoryAndAlgebra.pdf */; };
+		52058F911F75B24F0082BA62 /* FinancialAccounting.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 52058F8F1F75B24F0082BA62 /* FinancialAccounting.pdf */; };
+		52058F941F75B3B40082BA62 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52058F931F75B3B30082BA62 /* PDFKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		52058F7B1F75B17B0082BA62 /* PDFKitTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFKitTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52058F7F1F75B17B0082BA62 /* PDFKitTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFKitTestUITests.swift; sourceTree = "<group>"; };
 		52058F811F75B17B0082BA62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52058F8E1F75B24F0082BA62 /* NumberTheoryAndAlgebra.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NumberTheoryAndAlgebra.pdf; sourceTree = "<group>"; };
+		52058F8F1F75B24F0082BA62 /* FinancialAccounting.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FinancialAccounting.pdf; sourceTree = "<group>"; };
+		52058F931F75B3B30082BA62 /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52058F941F75B3B40082BA62 /* PDFKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,10 +84,12 @@
 		52058F531F75B17B0082BA62 = {
 			isa = PBXGroup;
 			children = (
+				52058F8D1F75B1F00082BA62 /* Books */,
 				52058F5E1F75B17B0082BA62 /* PDFKitTest */,
 				52058F731F75B17B0082BA62 /* PDFKitTestTests */,
 				52058F7E1F75B17B0082BA62 /* PDFKitTestUITests */,
 				52058F5D1F75B17B0082BA62 /* Products */,
+				52058F921F75B3B30082BA62 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +132,23 @@
 				52058F811F75B17B0082BA62 /* Info.plist */,
 			);
 			path = PDFKitTestUITests;
+			sourceTree = "<group>";
+		};
+		52058F8D1F75B1F00082BA62 /* Books */ = {
+			isa = PBXGroup;
+			children = (
+				52058F8F1F75B24F0082BA62 /* FinancialAccounting.pdf */,
+				52058F8E1F75B24F0082BA62 /* NumberTheoryAndAlgebra.pdf */,
+			);
+			path = Books;
+			sourceTree = "<group>";
+		};
+		52058F921F75B3B30082BA62 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52058F931F75B3B30082BA62 /* PDFKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +261,8 @@
 				52058F6A1F75B17B0082BA62 /* LaunchScreen.storyboard in Resources */,
 				52058F671F75B17B0082BA62 /* Assets.xcassets in Resources */,
 				52058F651F75B17B0082BA62 /* Main.storyboard in Resources */,
+				52058F911F75B24F0082BA62 /* FinancialAccounting.pdf in Resources */,
+				52058F901F75B24F0082BA62 /* NumberTheoryAndAlgebra.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
