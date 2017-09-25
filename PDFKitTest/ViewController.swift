@@ -14,6 +14,12 @@ class ViewController: UIViewController, PDFDocumentDelegate {
   @IBOutlet weak var pdfView: PDFView?
   var documentName: String?
 
+  @IBAction func toggleThumbnails(_ sender: Any) {
+    print("toggle thumbnails!")
+  }
+  @IBAction func toggleOutline(_ sender: Any) {
+    print("toggle outline!")
+  }
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.

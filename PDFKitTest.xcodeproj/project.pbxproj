@@ -17,6 +17,7 @@
 		52058F901F75B24F0082BA62 /* NumberTheoryAndAlgebra.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 52058F8E1F75B24F0082BA62 /* NumberTheoryAndAlgebra.pdf */; };
 		52058F911F75B24F0082BA62 /* FinancialAccounting.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 52058F8F1F75B24F0082BA62 /* FinancialAccounting.pdf */; };
 		52058F941F75B3B40082BA62 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52058F931F75B3B30082BA62 /* PDFKit.framework */; };
+		52F6A9EE1F79B24D00A461D3 /* ThumbnailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6A9ED1F79B24D00A461D3 /* ThumbnailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		52058F8E1F75B24F0082BA62 /* NumberTheoryAndAlgebra.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NumberTheoryAndAlgebra.pdf; sourceTree = "<group>"; };
 		52058F8F1F75B24F0082BA62 /* FinancialAccounting.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FinancialAccounting.pdf; sourceTree = "<group>"; };
 		52058F931F75B3B30082BA62 /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
+		52F6A9ED1F79B24D00A461D3 /* ThumbnailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				52058F661F75B17B0082BA62 /* Assets.xcassets */,
 				52058F681F75B17B0082BA62 /* LaunchScreen.storyboard */,
 				52058F6B1F75B17B0082BA62 /* Info.plist */,
+				52F6A9ED1F79B24D00A461D3 /* ThumbnailViewController.swift */,
 			);
 			path = PDFKitTest;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			files = (
 				52058F621F75B17B0082BA62 /* ViewController.swift in Sources */,
 				52058F601F75B17B0082BA62 /* AppDelegate.swift in Sources */,
+				52F6A9EE1F79B24D00A461D3 /* ThumbnailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
