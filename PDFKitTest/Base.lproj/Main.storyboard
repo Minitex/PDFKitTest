@@ -25,18 +25,18 @@
                             <barButtonItem image="TOC" id="ksg-jZ-A6p">
                                 <connections>
                                     <action selector="toggleOutline:" destination="BYZ-38-t0r" id="X1g-1b-BBu"/>
-                                    <segue destination="KM2-9o-7Ul" kind="show" identifier="OutlineSegue" id="jyp-sM-3GX"/>
+                                    <segue destination="a25-JK-3aN" kind="show" identifier="OutlineSegue" id="baK-BM-EBw"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="T2" id="xv4-am-msm">
+                            <barButtonItem title="Thumbs" id="xv4-am-msm">
                                 <connections>
-                                    <action selector="toggleThumbnails:" destination="BYZ-38-t0r" id="HRu-ml-QZX"/>
+                                    <action selector="toggleThumbnails:" destination="BYZ-38-t0r" id="kmQ-MC-IMC"/>
                                     <segue destination="KM2-9o-7Ul" kind="show" identifier="ThumbnailSegue" id="A8e-ag-S15"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="T1" id="fA5-vk-eMT">
+                            <barButtonItem systemItem="search" id="fA5-vk-eMT">
                                 <connections>
-                                    <action selector="toggleThumbnails2:" destination="BYZ-38-t0r" id="GSb-lQ-xjV"/>
+                                    <action selector="keywordSearch:" destination="BYZ-38-t0r" id="aCo-3L-TSc"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -67,6 +67,21 @@
             </objects>
             <point key="canvasLocation" x="1592.8" y="117.39130434782609"/>
         </scene>
+        <!--Outline View Controller-->
+        <scene sceneID="qTP-bc-P0l">
+            <objects>
+                <viewController id="a25-JK-3aN" customClass="OutlineViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B6D-82-pcC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Y7o-Ib-MyF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eKH-Nq-Ti5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1593" y="824"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ofu-Y0-YSK">
             <objects>
@@ -89,7 +104,4 @@
     <resources>
         <image name="TOC" width="45" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="A8e-ag-S15"/>
-    </inferredMetricsTieBreakers>
 </document>
