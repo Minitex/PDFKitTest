@@ -53,14 +53,14 @@
         <scene sceneID="ecb-wv-JJU">
             <objects>
                 <viewController id="KM2-9o-7Ul" customClass="ThumbnailViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Nj5-Me-JMd" customClass="PDFView">
+                    <view key="view" contentMode="scaleToFill" id="Nj5-Me-JMd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="r0Y-dO-hZM"/>
                     </view>
                     <connections>
-                        <outlet property="pdfView" destination="Nj5-Me-JMd" id="qhg-bK-yft"/>
+                        <outlet property="uiView" destination="Nj5-Me-JMd" id="vLS-kS-Djo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iqn-Bi-Zfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
