@@ -18,7 +18,6 @@
 		52058F911F75B24F0082BA62 /* FinancialAccounting.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 52058F8F1F75B24F0082BA62 /* FinancialAccounting.pdf */; };
 		52058F941F75B3B40082BA62 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52058F931F75B3B30082BA62 /* PDFKit.framework */; };
 		52AB57451F7AC8FA00BBA3D3 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB57441F7AC8FA00BBA3D3 /* OutlineViewController.swift */; };
-		52AB57471F7ADDE700BBA3D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52AB57461F7ADDE700BBA3D3 /* QuartzCore.framework */; };
 		52F6A9EE1F79B24D00A461D3 /* ThumbnailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6A9ED1F79B24D00A461D3 /* ThumbnailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AB57471F7ADDE700BBA3D3 /* QuartzCore.framework in Frameworks */,
 				52058F941F75B3B40082BA62 /* PDFKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
