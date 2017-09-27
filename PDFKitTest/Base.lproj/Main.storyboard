@@ -13,7 +13,7 @@
         <!--PDF-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="PDFView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,7 +78,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="TOC Page"/>
                                 <connections>
-                                    <segue destination="idR-ea-Oyr" kind="unwind" unwindAction="goToTableOfContents:" id="cKc-If-q8A"/>
+                                    <segue destination="idR-ea-Oyr" kind="unwind" unwindAction="unwindWithTOCOutlineWithSegue:" id="h8t-QA-zEj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLr-3P-ikV">
+                                <rect key="frame" x="153" y="216" width="69" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Chapter 6"/>
+                                <connections>
+                                    <segue destination="idR-ea-Oyr" kind="unwind" unwindAction="unwindWithChapterSixOutlineWithSegue:" id="tlO-yv-erw"/>
                                 </connections>
                             </button>
                         </subviews>

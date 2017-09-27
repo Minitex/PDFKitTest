@@ -13,9 +13,9 @@ class OutlineViewController: UIViewController, PDFDocumentDelegate {
   var document: PDFDocument?
   var outline: PDFOutline?
 
-  var selectedTOCIndex: Int?
-
-  
+  var selectedOutline: PDFOutline?  // will use this later
+  var TOCOutline: PDFOutline?
+  var ChapterSixOutline: PDFOutline?
 
 
   override func viewDidLoad() {
@@ -49,6 +49,8 @@ class OutlineViewController: UIViewController, PDFDocumentDelegate {
       print("\t[\(index)]:\(String(describing: currentChild?.destination?.page))")
       print("\t[\(index)]:\(String(describing: currentChild?.destination?.point))")
     }
+    TOCOutline = outline?.child(at: 2)
+    ChapterSixOutline = outline?.child(at: 9)
   }
 
 }

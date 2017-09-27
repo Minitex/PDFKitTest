@@ -9,21 +9,35 @@
 import UIKit
 import PDFKit
 
-class ViewController: UIViewController, PDFDocumentDelegate {
+class HomeViewController: UIViewController, PDFDocumentDelegate {
 
   @IBOutlet weak var pdfView: PDFView?
   var documentName: String?
   var document: PDFDocument?
-  var currentOutline: PDFOutline?
+  var selectedOutline: PDFOutline?
   
   @IBAction func keywordSearch(_ sender: Any) {
     print("keyword search")
   }
 
-  @IBAction func goToTableOfContents(_ segue: UIStoryboardSegue) {
-    print("to back and display the table of contents")
-   // selectedTOCIndex = 2 // official Table of Contents page
-    // receive the "outline" for table of contents page and then go to that page in the PDF
+  @IBAction func unwindWithTOCOutline(segue: UIStoryboardSegue) {
+    print("unwindWithTOCOutline")
+    if let outlineViewController = segue.source as? OutlineViewController {
+      selectedOutline = outlineViewController.TOCOutline
+      print("selectedOutline: \(String(describing: selectedOutline?.description))")
+
+      pdfView?.go(to: (selectedOutline?.destination?.page)!)
+    }
+  }
+
+  @IBAction func unwindWithChapterSixOutline(segue: UIStoryboardSegue) {
+    print("unwindWithChapterSixOutline")
+    if let outlineViewController = segue.source as? OutlineViewController {
+      selectedOutline = outlineViewController.ChapterSixOutline
+      print("selectedOutline: \(String(describing: selectedOutline?.description))")
+
+      pdfView?.go(to: (selectedOutline?.destination?.page)!)
+    }
   }
 
   override func viewDidLoad() {
