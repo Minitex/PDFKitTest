@@ -56,7 +56,6 @@
 		52058F8F1F75B24F0082BA62 /* FinancialAccounting.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FinancialAccounting.pdf; sourceTree = "<group>"; };
 		52058F931F75B3B30082BA62 /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
 		52AB57441F7AC8FA00BBA3D3 /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
-		52AB57461F7ADDE700BBA3D3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		52F6A9ED1F79B24D00A461D3 /* ThumbnailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,7 +152,6 @@
 		52058F921F75B3B30082BA62 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				52AB57461F7ADDE700BBA3D3 /* QuartzCore.framework */,
 				52058F931F75B3B30082BA62 /* PDFKit.framework */,
 			);
 			name = Frameworks;

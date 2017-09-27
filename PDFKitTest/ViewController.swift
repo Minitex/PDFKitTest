@@ -13,35 +13,33 @@ class ViewController: UIViewController, PDFDocumentDelegate {
 
   @IBOutlet weak var pdfView: PDFView?
   var documentName: String?
-  //var document: PDFDocument?
+  var document: PDFDocument?
+  var currentOutline: PDFOutline?
   
   @IBAction func keywordSearch(_ sender: Any) {
     print("keyword search")
   }
 
-  @IBAction func toggleThumbnails(_ sender: Any) {
-    print("toggle thumbnails!")
-    performSegue(withIdentifier: "ThumbnailSegue", sender: nil)
+  @IBAction func goToTableOfContents(_ segue: UIStoryboardSegue) {
+    print("to back and display the table of contents")
+   // selectedTOCIndex = 2 // official Table of Contents page
+    // receive the "outline" for table of contents page and then go to that page in the PDF
   }
 
-  @IBAction func toggleOutline(_ sender: Any) {
-    print("toggle outline!")
-    performSegue(withIdentifier: "OutlineSegue", sender: nil)
-  }
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
 
     documentName = "FinancialAccounting"
-
-    if let document = setPDFDocument() as PDFDocument? {
+    if let documentURL = Bundle.main.url(forResource: documentName, withExtension: "pdf") {
+        document = PDFDocument(url: documentURL)
         // Center document on gray background
         pdfView?.autoScales = true
         pdfView?.backgroundColor = UIColor.lightGray
         pdfView?.usePageViewController(true, withViewOptions: nil)
 
         // Set delegate
-        document.delegate = self
+        document?.delegate = self
         pdfView?.document = document
     }
 
@@ -52,23 +50,11 @@ class ViewController: UIViewController, PDFDocumentDelegate {
     // Dispose of any resources that can be recreated.
   }
 
-  func setPDFDocument() -> PDFDocument? {
-    var document: PDFDocument?
-    if let documentURL = Bundle.main.url(forResource: documentName, withExtension: "pdf") {
-       document = PDFDocument(url: documentURL)
-      return document!
-    }
-    return document!
-  }
-
   // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let identifier = segue.identifier else {
       return
     }
-
-
-    let document = setPDFDocument()
 
     if identifier == "ThumbnailSegue" {
       //if let document = sender as? PDFDocument, // this doesn't work!
@@ -76,8 +62,11 @@ class ViewController: UIViewController, PDFDocumentDelegate {
           upcoming.document = document
           upcoming.title = "Thumbnails"
           print("set document successfully!")
+          print("going to thumbnails")
         }
-      } else if identifier == "OutlineSegue" {
+      }
+
+    if identifier == "OutlineSegue" {
       if     let upcoming = segue.destination as? OutlineViewController {
             upcoming.document = document
             upcoming.title = "Outline"

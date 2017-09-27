@@ -24,13 +24,11 @@
                         <rightBarButtonItems>
                             <barButtonItem image="TOC" id="ksg-jZ-A6p">
                                 <connections>
-                                    <action selector="toggleOutline:" destination="BYZ-38-t0r" id="X1g-1b-BBu"/>
-                                    <segue destination="a25-JK-3aN" kind="show" identifier="OutlineSegue" id="baK-BM-EBw"/>
+                                    <segue destination="a25-JK-3aN" kind="show" identifier="OutlineSegue" id="tZy-UH-eOt"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Thumbs" id="xv4-am-msm">
                                 <connections>
-                                    <action selector="toggleThumbnails:" destination="BYZ-38-t0r" id="kmQ-MC-IMC"/>
                                     <segue destination="KM2-9o-7Ul" kind="show" identifier="ThumbnailSegue" id="A8e-ag-S15"/>
                                 </connections>
                             </barButtonItem>
@@ -67,20 +65,32 @@
             </objects>
             <point key="canvasLocation" x="1592.8" y="117.39130434782609"/>
         </scene>
-        <!--Outline View Controller-->
+        <!--Outline-->
         <scene sceneID="qTP-bc-P0l">
             <objects>
                 <viewController id="a25-JK-3aN" customClass="OutlineViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B6D-82-pcC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLM-b9-8vE">
+                                <rect key="frame" x="153" y="142" width="69" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="TOC Page"/>
+                                <connections>
+                                    <segue destination="idR-ea-Oyr" kind="unwind" unwindAction="goToTableOfContents:" id="cKc-If-q8A"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Y7o-Ib-MyF"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Outline" id="JEp-1P-YAt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eKH-Nq-Ti5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="idR-ea-Oyr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1593" y="824"/>
+            <point key="canvasLocation" x="1932" y="823.53823088455783"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ofu-Y0-YSK">

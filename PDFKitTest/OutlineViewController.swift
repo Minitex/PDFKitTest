@@ -11,6 +11,12 @@ import PDFKit
 
 class OutlineViewController: UIViewController, PDFDocumentDelegate {
   var document: PDFDocument?
+  var outline: PDFOutline?
+
+  var selectedTOCIndex: Int?
+
+  
+
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,15 +35,20 @@ class OutlineViewController: UIViewController, PDFDocumentDelegate {
   }
 
   func tableOfContents() {
-    if let outline = document?.outlineRoot {
-        print(outline.isOpen)
-        print(outline.numberOfChildren)
-        var currentChild: PDFOutline?
-        for index in 0...outline.numberOfChildren - 1 {
-          currentChild = outline.child(at: index)
-          print(currentChild?.label ?? "No Child")
-        }
-      }
+    guard document?.outlineRoot != nil else {
+      print("document outline doesn't exist!")
+      return
+    }
+    outline = document?.outlineRoot
+    print(outline?.isOpen as Any)
+    print(outline?.numberOfChildren as Any)
+    var currentChild: PDFOutline?
+    for index in 0...(outline?.numberOfChildren)! - 1 {
+      currentChild = outline?.child(at: index)
+      print("[\(index)]:\(String(describing: currentChild?.label))")
+      print("\t[\(index)]:\(String(describing: currentChild?.destination?.page))")
+      print("\t[\(index)]:\(String(describing: currentChild?.destination?.point))")
+    }
   }
 
 }
