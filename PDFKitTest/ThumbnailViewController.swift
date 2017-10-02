@@ -15,6 +15,7 @@ class ThumbnailViewController: UIViewController, PDFDocumentDelegate {
   var pdfView: PDFView?
   var pdfThumbnailView: PDFThumbnailView?
   var scrollView: UIScrollView?
+  var pageCount: Int?
   
   @IBOutlet weak var uiView: UIView!
   
@@ -34,21 +35,21 @@ class ThumbnailViewController: UIViewController, PDFDocumentDelegate {
   }
 
   func displayThumbnails() {
-    let thumbnailRect = CGRect(x: 0, y: Int(self.uiView.frame.height) - 150, width: 1000, height: 150)
+    displayPDF()
+
+    let thumbnailRect = CGRect(x: 0, y: Int(self.uiView.frame.height) - 150, width:  Int(self.uiView.frame.width), height: 1000)
     let scrollViewRect = CGRect(x: 0, y: Int(self.uiView.frame.height) - 150, width: Int(self.uiView.frame.width), height: 150)
 
     pdfThumbnailView = PDFThumbnailView(frame: thumbnailRect)
+    pdfThumbnailView?.pdfView = pdfView
+    pdfThumbnailView?.thumbnailSize = CGSize(width: 70, height: 140)
+    pdfThumbnailView?.layoutMode = .horizontal
+
     scrollView = UIScrollView.init(frame: scrollViewRect)
     scrollView?.contentSize = CGSize.init(width: thumbnailRect.width, height: thumbnailRect.height)
-    pdfThumbnailView?.thumbnailSize = CGSize(width: 25, height: 50)
 
-    displayPDF()
-    pdfThumbnailView?.pdfView = pdfView
-    pdfThumbnailView?.layoutMode = .horizontal
     scrollView?.addSubview(pdfThumbnailView!)
-    pdfView?.addSubview(scrollView!)
-
-
+    self.uiView?.addSubview(scrollView!)
   }
 
   func displayPDF() {
@@ -63,11 +64,13 @@ class ThumbnailViewController: UIViewController, PDFDocumentDelegate {
       // 1. Set delegate
       document.delegate = self
       pdfView?.document = document
+      pageCount = document.pageCount
       //pdfView.displayDirection = .horizontal
 
       self.uiView.addSubview(pdfView!)
       //self.view = pdfView
       print("set document success!")
+      print("page count is: \(String(describing: pageCount))")
       } else {
       print("set document NOT successful!")
     }
