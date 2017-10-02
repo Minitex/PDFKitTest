@@ -14,6 +14,7 @@ class ThumbnailViewController: UIViewController, PDFDocumentDelegate {
   var document: PDFDocument?
   var pdfView: PDFView?
   var pdfThumbnailView: PDFThumbnailView?
+  var scrollView: UIScrollView?
   
   @IBOutlet weak var uiView: UIView!
   
@@ -33,13 +34,21 @@ class ThumbnailViewController: UIViewController, PDFDocumentDelegate {
   }
 
   func displayThumbnails() {
-    let thumbnailRect = CGRect(x: 0, y: Int(self.uiView.frame.height) - 150, width: Int(self.uiView.frame.width), height: 150)
+    let thumbnailRect = CGRect(x: 0, y: Int(self.uiView.frame.height) - 150, width: 1000, height: 150)
+    let scrollViewRect = CGRect(x: 0, y: Int(self.uiView.frame.height) - 150, width: Int(self.uiView.frame.width), height: 150)
+
     pdfThumbnailView = PDFThumbnailView(frame: thumbnailRect)
+    scrollView = UIScrollView.init(frame: scrollViewRect)
+    scrollView?.contentSize = CGSize.init(width: thumbnailRect.width, height: thumbnailRect.height)
     pdfThumbnailView?.thumbnailSize = CGSize(width: 25, height: 50)
+
     displayPDF()
     pdfThumbnailView?.pdfView = pdfView
     pdfThumbnailView?.layoutMode = .horizontal
-    pdfView?.addSubview(pdfThumbnailView!)
+    scrollView?.addSubview(pdfThumbnailView!)
+    pdfView?.addSubview(scrollView!)
+
+
   }
 
   func displayPDF() {
