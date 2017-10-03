@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X72-GF-ARr">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +16,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="PDFView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -52,12 +53,48 @@
             <objects>
                 <viewController id="KM2-9o-7Ul" customClass="ThumbnailViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nj5-Me-JMd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMh-sg-SUv" customClass="PDFView">
+                                <rect key="frame" x="0.0" y="64" width="414" height="552"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xW7-Nb-Iez">
+                                <rect key="frame" x="0.0" y="616" width="414" height="168"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGI-ds-K28" userLabel="Content View" customClass="PDFThumbnailView">
+                                        <rect key="frame" x="0.0" y="0.0" width="1000" height="168.66666666666663"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1000" id="MmH-lP-VRx"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="DGI-ds-K28" firstAttribute="height" secondItem="xW7-Nb-Iez" secondAttribute="height" id="N3K-LB-5To"/>
+                                    <constraint firstItem="DGI-ds-K28" firstAttribute="leading" secondItem="xW7-Nb-Iez" secondAttribute="leading" id="ZLS-fI-3Li"/>
+                                    <constraint firstItem="DGI-ds-K28" firstAttribute="top" secondItem="xW7-Nb-Iez" secondAttribute="top" id="gxb-ZG-Eyp"/>
+                                    <constraint firstAttribute="bottom" secondItem="DGI-ds-K28" secondAttribute="bottom" id="hSL-wh-ENq"/>
+                                    <constraint firstAttribute="trailing" secondItem="DGI-ds-K28" secondAttribute="trailing" id="tle-0k-7U6"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xW7-Nb-Iez" firstAttribute="top" secondItem="AMh-sg-SUv" secondAttribute="bottom" id="DIO-lu-5f9"/>
+                            <constraint firstItem="AMh-sg-SUv" firstAttribute="trailing" secondItem="r0Y-dO-hZM" secondAttribute="trailing" id="EkC-IJ-EFW"/>
+                            <constraint firstItem="AMh-sg-SUv" firstAttribute="height" secondItem="Nj5-Me-JMd" secondAttribute="height" multiplier="0.75" id="Y8r-Uw-213"/>
+                            <constraint firstItem="xW7-Nb-Iez" firstAttribute="trailing" secondItem="r0Y-dO-hZM" secondAttribute="trailing" id="b8R-uk-rRd"/>
+                            <constraint firstItem="xW7-Nb-Iez" firstAttribute="leading" secondItem="r0Y-dO-hZM" secondAttribute="leading" id="pCw-MX-8Al"/>
+                            <constraint firstItem="AMh-sg-SUv" firstAttribute="top" secondItem="r0Y-dO-hZM" secondAttribute="top" id="q6b-9Y-Uh8"/>
+                            <constraint firstItem="xW7-Nb-Iez" firstAttribute="height" secondItem="r0Y-dO-hZM" secondAttribute="height" multiplier="0.25" id="rX7-Ql-DHi"/>
+                            <constraint firstItem="AMh-sg-SUv" firstAttribute="leading" secondItem="r0Y-dO-hZM" secondAttribute="leading" id="t5y-H7-Oak"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="r0Y-dO-hZM"/>
                     </view>
                     <connections>
+                        <outlet property="pdfThumbnailView" destination="DGI-ds-K28" id="obs-ic-ZbR"/>
+                        <outlet property="pdfView" destination="AMh-sg-SUv" id="fIJ-J0-eQM"/>
                         <outlet property="uiView" destination="Nj5-Me-JMd" id="vLS-kS-Djo"/>
                     </connections>
                 </viewController>
@@ -70,7 +107,7 @@
             <objects>
                 <viewController id="a25-JK-3aN" customClass="OutlineViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B6D-82-pcC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLM-b9-8vE">
@@ -106,7 +143,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X72-GF-ARr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EN0-0x-f1a">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
