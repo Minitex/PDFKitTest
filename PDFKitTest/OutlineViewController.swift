@@ -13,11 +13,11 @@ class OutlineViewController: UIViewController, PDFDocumentDelegate {
   var document: PDFDocument?
   var outline: PDFOutline?
 
-  var selectedOutline: PDFOutline?  // will use this later
-  var TOCOutline: PDFOutline?
-  var ChapterSixOutline: PDFOutline?
+  var selectedOutline: PDFOutline?
 
-
+  @IBOutlet weak var tocButton: UIButton!
+  @IBOutlet weak var chapter6Button: UIButton!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
@@ -49,8 +49,18 @@ class OutlineViewController: UIViewController, PDFDocumentDelegate {
       print("\t[\(index)]:\(String(describing: currentChild?.destination?.page))")
       print("\t[\(index)]:\(String(describing: currentChild?.destination?.point))")
     }
-    TOCOutline = outline?.child(at: 2)
-    ChapterSixOutline = outline?.child(at: 9)
   }
 
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let button = sender as? UIButton  else {
+      return
+    }
+    if segue.identifier == "SaveSelectedOutline" {
+      if button === tocButton {
+        selectedOutline = outline?.child(at: 2)
+      } else {
+        selectedOutline = outline?.child(at: 9)
+      }
+    }
+  }
 }

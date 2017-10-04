@@ -14,13 +14,17 @@ class ThumbnailViewController: UIViewController, PDFDocumentDelegate {
   var document: PDFDocument?
   //var pdfView: PDFView?
   //var pdfThumbnailView: PDFThumbnailView?
-  var scrollView: UIScrollView?
+  //var scrollView: UIScrollView?
   var pageCount: Int?
   
   @IBOutlet weak var uiView: UIView!
   @IBOutlet weak var pdfView: PDFView!
   @IBOutlet weak var pdfThumbnailView: PDFThumbnailView!
-  
+ 
+  @IBAction func goToSelectedPage(_ sender: Any) {
+    print(pdfThumbnailView?.selectedPages() ?? "No pages selected")
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
@@ -28,7 +32,7 @@ class ThumbnailViewController: UIViewController, PDFDocumentDelegate {
     //displayPDF()
     displayThumbnails()
 
-    displayBottomView()
+    //displayBottomView()
   }
 
   override func didReceiveMemoryWarning() {
@@ -56,6 +60,8 @@ class ThumbnailViewController: UIViewController, PDFDocumentDelegate {
 
     var uicollectionview = pdfThumbnailView?.subviews[0] as! UICollectionView
     print(uicollectionview)
+
+    print(pdfThumbnailView?.selectedPages() ?? "No pages selected")
     //uicollectionview.backgroundColor = UIColor.blue
 
     //scrollView = UIScrollView.init(frame: scrollViewRect)
