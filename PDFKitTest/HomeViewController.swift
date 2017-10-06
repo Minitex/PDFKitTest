@@ -72,6 +72,8 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
       return
     }
 
+    /*
+     // OBE
     if identifier == "ThumbnailSegue" {
       //if let document = sender as? PDFDocument, // this doesn't work!
       if let upcoming = segue.destination as? ThumbnailViewController {
@@ -81,6 +83,15 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
           print("going to thumbnails")
         }
       }
+ */
+
+    if identifier == "ThumbCollectionSegue" {
+      if let upcoming = segue.destination as? ThumbCollectionViewController {
+        upcoming.document = document
+        upcoming.title = "Thumbnails"
+        print("going to the thumbnail collection")
+      }
+    }
 
     if identifier == "OutlineSegue" {
       if let upcoming = segue.destination as? OutlineViewController {
@@ -94,7 +105,7 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
       if let upcoming = segue.destination as? ThumbManualViewController {
         upcoming.document = document
         upcoming.title = "Thumbnail Outline"
-        print("going to the thumbnail outline")
+        print("going to the manual thumbnail outline")
       }
     }
   }
