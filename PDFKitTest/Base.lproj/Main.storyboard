@@ -150,6 +150,7 @@
                                 <size key="customSize" width="100" height="100"/>
                                 <connections>
                                     <outlet property="imageView" destination="Zr4-S4-e5i" id="9yc-Vl-QHK"/>
+                                    <segue destination="47S-S1-4Kg" kind="unwind" identifier="SaveSelectedPage" unwindAction="unwindWithSelectedPageWithSegue:" id="Aob-Vk-ab3"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -160,6 +161,7 @@
                     </collectionView>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUB-jy-BHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="47S-S1-4Kg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="287.5" y="831.4453125"/>
         </scene>

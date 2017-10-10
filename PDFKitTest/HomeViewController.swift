@@ -40,6 +40,10 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
       print("on page: \(String(describing: selectedPage))")
       pdfView?.go(to: selectedPage!)
     }
+    if let thumbCollectionViewController = segue.source as? ThumbCollectionViewController {
+      selectedPage = thumbCollectionViewController.selectedPage
+      print("on page: \(String(describing: selectedPage))")
+      pdfView?.go(to: selectedPage!)    }
   }
 
   override func viewDidLoad() {
