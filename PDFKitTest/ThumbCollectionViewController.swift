@@ -18,8 +18,8 @@ class ThumbCollectionViewController: UICollectionViewController, PDFDocumentDele
   var thumbnailHeight: CGFloat?
 
   fileprivate let reuseIdentifier = "ThumbnailCell"
-  fileprivate let itemsPerRow: CGFloat = 3
   fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+  fileprivate var itemsPerRow: CGFloat = 3
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -66,14 +66,14 @@ class ThumbCollectionViewController: UICollectionViewController, PDFDocumentDele
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 20
+      return pageCount!
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThumbnailImageCell
     
-        // Configure the cell
-        cell.backgroundColor = UIColor.white
+      // Configure the cell
+      cell.backgroundColor = UIColor.white
       let page = document?.page(at: indexPath.row)
       cell.imageView.image = page?.thumbnail(of: CGSize(width:thumbnailWidth!, height: thumbnailHeight!), for: .cropBox)
 
@@ -118,13 +118,19 @@ extension ThumbCollectionViewController: UICollectionViewDelegateFlowLayout {
                       layout collectionViewLayout: UICollectionViewLayout,
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
 
+    if UIApplication.shared.statusBarOrientation.rawValue <= UIInterfaceOrientation.portraitUpsideDown.rawValue {
+      itemsPerRow = 3
+    } else {
+      itemsPerRow = 4
+    }
+
     let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
     let availableWidth = view.frame.width - paddingSpace
     let widthPerItem = availableWidth / itemsPerRow
 
-    thumbnailWidth = widthPerItem
+    thumbnailWidth = widthPerItem * 0.75
     thumbnailHeight = widthPerItem
-    return CGSize(width: widthPerItem, height: widthPerItem)
+    return CGSize(width: thumbnailWidth!, height: thumbnailHeight!)
   }
 
 
