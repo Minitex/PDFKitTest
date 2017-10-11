@@ -20,11 +20,17 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="PDF" id="b9G-fh-GLK">
                         <rightBarButtonItems>
-                            <barButtonItem enabled="NO" id="fA5-vk-eMT">
+                            <barButtonItem systemItem="search" id="fA5-vk-eMT">
                                 <connections>
                                     <action selector="keywordSearch:" destination="BYZ-38-t0r" id="aCo-3L-TSc"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="About" id="9M8-1N-9is">
+                                <connections>
+                                    <segue destination="reC-Ix-5JG" kind="show" identifier="AboutSegue" id="uTc-QI-yUg"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="TOC" id="ksg-jZ-A6p">
@@ -39,6 +45,7 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="pdfView" destination="8bC-Xf-vdC" id="VFF-hK-o6m"/>
                     </connections>
@@ -138,6 +145,38 @@
                 <exit id="47S-S1-4Kg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="795" y="831"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="SF9-9s-AeK">
+            <objects>
+                <viewController id="reC-Ix-5JG" customClass="AboutViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fgn-4A-b8T">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ByP-dK-Tl2">
+                                <rect key="frame" x="20" y="500" width="728" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ByP-dK-Tl2" firstAttribute="leading" secondItem="Wnv-Ug-otd" secondAttribute="leading" constant="20" id="KWu-AW-T14"/>
+                            <constraint firstItem="ByP-dK-Tl2" firstAttribute="trailing" secondItem="Wnv-Ug-otd" secondAttribute="trailing" constant="-20" id="i6m-5A-MgS"/>
+                            <constraint firstItem="ByP-dK-Tl2" firstAttribute="centerX" secondItem="fgn-4A-b8T" secondAttribute="centerX" id="qYw-ve-1cj"/>
+                            <constraint firstItem="ByP-dK-Tl2" firstAttribute="centerY" secondItem="fgn-4A-b8T" secondAttribute="centerY" id="zKb-RY-20S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wnv-Ug-otd"/>
+                    </view>
+                    <connections>
+                        <outlet property="aboutLabel" destination="ByP-dK-Tl2" id="Sfk-kJ-cfl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OMV-jA-JoQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1590.625" y="830.859375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ofu-Y0-YSK">

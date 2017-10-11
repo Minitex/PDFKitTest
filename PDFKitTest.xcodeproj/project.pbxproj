@@ -18,6 +18,7 @@
 		52058F911F75B24F0082BA62 /* FinancialAccounting.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 52058F8F1F75B24F0082BA62 /* FinancialAccounting.pdf */; };
 		52058F941F75B3B40082BA62 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52058F931F75B3B30082BA62 /* PDFKit.framework */; };
 		525EC7281F8E6C61003FFD12 /* TOCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EC7271F8E6C61003FFD12 /* TOCViewController.swift */; };
+		525EC72A1F8EBF30003FFD12 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EC7291F8EBF30003FFD12 /* AboutViewController.swift */; };
 		527C6CB51F880C840065869F /* ThumbCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */; };
 		527C6CB71F88331C0065869F /* ThumbnailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		52058F8F1F75B24F0082BA62 /* FinancialAccounting.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FinancialAccounting.pdf; sourceTree = "<group>"; };
 		52058F931F75B3B30082BA62 /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
 		525EC7271F8E6C61003FFD12 /* TOCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOCViewController.swift; sourceTree = "<group>"; };
+		525EC7291F8EBF30003FFD12 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbCollectionViewController.swift; sourceTree = "<group>"; };
 		527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +123,7 @@
 				527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */,
 				527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */,
 				525EC7271F8E6C61003FFD12 /* TOCViewController.swift */,
+				525EC7291F8EBF30003FFD12 /* AboutViewController.swift */,
 			);
 			path = PDFKitTest;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525EC72A1F8EBF30003FFD12 /* AboutViewController.swift in Sources */,
 				52058F621F75B17B0082BA62 /* HomeViewController.swift in Sources */,
 				527C6CB71F88331C0065869F /* ThumbnailImageCell.swift in Sources */,
 				527C6CB51F880C840065869F /* ThumbCollectionViewController.swift in Sources */,

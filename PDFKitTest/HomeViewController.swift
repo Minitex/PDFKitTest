@@ -11,16 +11,16 @@ import PDFKit
 
 class HomeViewController: UIViewController, PDFDocumentDelegate {
 
-  @IBOutlet weak var pdfView: PDFView?
-  var documentName: String?
   var document: PDFDocument?
   var selectedOutline: PDFOutline?
   var selectedPage: PDFPage?
-  
+  let documentName: String = "FinancialAccounting"
+
+  @IBOutlet weak var pdfView: PDFView?
+
   @IBAction func keywordSearch(_ sender: Any) {
     print("keyword search")
   }
-
 
   @IBAction func unwindWithSelectedPage(segue: UIStoryboardSegue) {
     print("unwindWithSelectedPage")
@@ -42,17 +42,17 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
 
-    documentName = "FinancialAccounting"
     if let documentURL = Bundle.main.url(forResource: documentName, withExtension: "pdf") {
-        document = PDFDocument(url: documentURL)
-        // Center document on gray background
-        pdfView?.autoScales = true
-        pdfView?.backgroundColor = UIColor.lightGray
-        pdfView?.usePageViewController(true, withViewOptions: nil)
+      document = PDFDocument(url: documentURL)
+      // Set delegate
+      document?.delegate = self
 
-        // Set delegate
-        document?.delegate = self
-        pdfView?.document = document
+      pdfView?.document = document
+      pdfView?.autoScales = true
+      pdfView?.backgroundColor = UIColor.lightGray
+      pdfView?.usePageViewController(true, withViewOptions: nil)
+
+      print("document metadata: \(String(describing: document?.documentAttributes))")
     }
 
   }
@@ -81,6 +81,14 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
         upcoming.document = document
         upcoming.title = "Table of Contents"
         print("going to table of contents")
+      }
+    }
+
+    if identifier == "AboutSegue" {
+      if let upcoming = segue.destination as? AboutViewController {
+        upcoming.document = document
+        upcoming.title = "About This Book"
+        print("going to About Page")
       }
     }
   }
