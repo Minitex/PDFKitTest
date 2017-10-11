@@ -40,10 +40,18 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
       print("on page: \(String(describing: selectedPage))")
       pdfView?.go(to: selectedPage!)
     }
+    
     if let thumbCollectionViewController = segue.source as? ThumbCollectionViewController {
       selectedPage = thumbCollectionViewController.selectedPage
       print("on page: \(String(describing: selectedPage))")
-      pdfView?.go(to: selectedPage!)    }
+      pdfView?.go(to: selectedPage!)
+    }
+
+    if let tocViewController = segue.source as? TOCViewController {
+      selectedPage = tocViewController.selectedPage
+      print("on page: \(String(describing: selectedPage))")
+      pdfView?.go(to: selectedPage!)
+    }
   }
 
   override func viewDidLoad() {
@@ -99,11 +107,11 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
 
     if identifier == "OutlineSegue" {
       if let upcoming = segue.destination as? OutlineViewController {
-            upcoming.document = document
-            upcoming.title = "Outline"
-            print("going to the outline")
-        }
+        upcoming.document = document
+        upcoming.title = "Outline"
+        print("going to the outline")
       }
+    }
 
     if identifier == "ThumbManualSegue" {
       if let upcoming = segue.destination as? ThumbManualViewController {
@@ -120,9 +128,7 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
         print("going to table of contents")
       }
     }
-    
   }
-
 
 }
 

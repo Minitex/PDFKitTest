@@ -13,7 +13,7 @@ class TOCViewController: UITableViewController, PDFDocumentDelegate {
 
   var document: PDFDocument?
   var selectedPage: PDFPage?
-  var selectedOutline: PDFOutline?
+  var selectedChapter: PDFOutline?
   var chapters = [PDFOutline]()
   var chapterCount: Int?
 
@@ -58,30 +58,35 @@ class TOCViewController: UITableViewController, PDFDocumentDelegate {
     }
   }
   
-    // MARK: - Table view data source
+  // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    // #warning Incomplete implementation, return the number of sections
+    return 1
+  }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-      return chapterCount!
-    }
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // #warning Incomplete implementation, return the number of rows
+    return chapterCount!
+  }
 
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+    // Configure the cell...
+    //cell.textLabel?.text = indexPath.row.description
 
-      // Configure the cell...
-      //cell.textLabel?.text = indexPath.row.description
+    cell.textLabel?.text = chapters[indexPath.row].label
+    return cell
+  }
 
-      cell.textLabel?.text = chapters[indexPath.row].label
-      return cell
-    }
-    
-
+  // MARK: - Table view delegate
+  override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    print("selected \(indexPath.row)")
+    selectedChapter = chapters[indexPath.row]
+    selectedPage = selectedChapter?.destination?.page
+    return indexPath
+  }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -117,14 +122,18 @@ class TOCViewController: UITableViewController, PDFDocumentDelegate {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+      if segue.identifier == "SaveSelectedPage" {
+        if let upcoming = segue.destination as? HomeViewController {
+          upcoming.selectedPage = selectedPage
+          print("going back to HomeViewController")
+        }
+      }
     }
-    */
+    
 
 }

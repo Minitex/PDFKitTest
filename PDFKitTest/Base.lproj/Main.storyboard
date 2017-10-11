@@ -62,7 +62,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TOCCell" textLabel="9lY-yu-p68" style="IBUITableViewCellStyleDefault" id="xRa-GB-ba9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TOCCell" textLabel="9lY-yu-p68" style="IBUITableViewCellStyleDefault" id="xRa-GB-ba9">
                                 <rect key="frame" x="0.0" y="28" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xRa-GB-ba9" id="WPT-ud-27b">
@@ -78,6 +78,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="kig-gV-5lW" kind="unwind" identifier="SaveSelectedPage" unwindAction="unwindWithSelectedPageWithSegue:" id="IXg-MB-WgF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -87,6 +90,7 @@
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0e-VU-pWZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kig-gV-5lW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1591" y="120"/>
         </scene>
