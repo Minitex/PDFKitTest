@@ -21,26 +21,10 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
     print("keyword search")
   }
 
-  @IBAction func unwindWithSelectedOutline(segue: UIStoryboardSegue) {
-    print("unwindWithSelectedOutline")
-    if let outlineViewController = segue.source as? OutlineViewController {
-      selectedOutline = outlineViewController.selectedOutline
-      print("selectedOutline: \(String(describing: selectedOutline?.description))")
-      print("on page: \(String(describing: selectedOutline?.destination?.page))")
-
-      pdfView?.go(to: (selectedOutline?.destination?.page)!)
-      
-    }
-  }
 
   @IBAction func unwindWithSelectedPage(segue: UIStoryboardSegue) {
     print("unwindWithSelectedPage")
-    if let thumbManualViewController = segue.source as? ThumbManualViewController {
-      selectedPage = thumbManualViewController.selectedPage
-      print("on page: \(String(describing: selectedPage))")
-      pdfView?.go(to: selectedPage!)
-    }
-    
+
     if let thumbCollectionViewController = segue.source as? ThumbCollectionViewController {
       selectedPage = thumbCollectionViewController.selectedPage
       print("on page: \(String(describing: selectedPage))")
@@ -84,40 +68,11 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
       return
     }
 
-    /*
-     // OBE
-    if identifier == "ThumbnailSegue" {
-      //if let document = sender as? PDFDocument, // this doesn't work!
-      if let upcoming = segue.destination as? ThumbnailViewController {
-          upcoming.document = document
-          upcoming.title = "Thumbnails"
-          print("set document successfully!")
-          print("going to thumbnails")
-        }
-      }
- */
-
     if identifier == "ThumbCollectionSegue" {
       if let upcoming = segue.destination as? ThumbCollectionViewController {
         upcoming.document = document
         upcoming.title = "Thumbnails"
         print("going to the thumbnail collection")
-      }
-    }
-
-    if identifier == "OutlineSegue" {
-      if let upcoming = segue.destination as? OutlineViewController {
-        upcoming.document = document
-        upcoming.title = "Outline"
-        print("going to the outline")
-      }
-    }
-
-    if identifier == "ThumbManualSegue" {
-      if let upcoming = segue.destination as? ThumbManualViewController {
-        upcoming.document = document
-        upcoming.title = "Thumbnail Outline"
-        print("going to the manual thumbnail outline")
       }
     }
 

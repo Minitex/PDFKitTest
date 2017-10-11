@@ -20,9 +20,6 @@
 		525EC7281F8E6C61003FFD12 /* TOCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EC7271F8E6C61003FFD12 /* TOCViewController.swift */; };
 		527C6CB51F880C840065869F /* ThumbCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */; };
 		527C6CB71F88331C0065869F /* ThumbnailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */; };
-		52AB57451F7AC8FA00BBA3D3 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB57441F7AC8FA00BBA3D3 /* OutlineViewController.swift */; };
-		52BD21C61F84315100A9B0B5 /* ThumbManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BD21C51F84315100A9B0B5 /* ThumbManualViewController.swift */; };
-		52F6A9EE1F79B24D00A461D3 /* ThumbnailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6A9ED1F79B24D00A461D3 /* ThumbnailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,9 +59,6 @@
 		525EC7271F8E6C61003FFD12 /* TOCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOCViewController.swift; sourceTree = "<group>"; };
 		527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbCollectionViewController.swift; sourceTree = "<group>"; };
 		527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageCell.swift; sourceTree = "<group>"; };
-		52AB57441F7AC8FA00BBA3D3 /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
-		52BD21C51F84315100A9B0B5 /* ThumbManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbManualViewController.swift; sourceTree = "<group>"; };
-		52F6A9ED1F79B24D00A461D3 /* ThumbnailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,15 +112,12 @@
 		52058F5E1F75B17B0082BA62 /* PDFKitTest */ = {
 			isa = PBXGroup;
 			children = (
-				52BD21C51F84315100A9B0B5 /* ThumbManualViewController.swift */,
 				52058F5F1F75B17B0082BA62 /* AppDelegate.swift */,
 				52058F611F75B17B0082BA62 /* HomeViewController.swift */,
 				52058F631F75B17B0082BA62 /* Main.storyboard */,
 				52058F661F75B17B0082BA62 /* Assets.xcassets */,
 				52058F681F75B17B0082BA62 /* LaunchScreen.storyboard */,
 				52058F6B1F75B17B0082BA62 /* Info.plist */,
-				52F6A9ED1F79B24D00A461D3 /* ThumbnailViewController.swift */,
-				52AB57441F7AC8FA00BBA3D3 /* OutlineViewController.swift */,
 				527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */,
 				527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */,
 				525EC7271F8E6C61003FFD12 /* TOCViewController.swift */,
@@ -306,12 +297,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				52058F621F75B17B0082BA62 /* HomeViewController.swift in Sources */,
-				52BD21C61F84315100A9B0B5 /* ThumbManualViewController.swift in Sources */,
-				52AB57451F7AC8FA00BBA3D3 /* OutlineViewController.swift in Sources */,
 				527C6CB71F88331C0065869F /* ThumbnailImageCell.swift in Sources */,
 				527C6CB51F880C840065869F /* ThumbCollectionViewController.swift in Sources */,
 				52058F601F75B17B0082BA62 /* AppDelegate.swift in Sources */,
-				52F6A9EE1F79B24D00A461D3 /* ThumbnailViewController.swift in Sources */,
 				525EC7281F8E6C61003FFD12 /* TOCViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

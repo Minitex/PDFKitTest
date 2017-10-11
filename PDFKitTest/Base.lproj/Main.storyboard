@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,11 +35,6 @@
                             <barButtonItem title="Thumbnails" id="xv4-am-msm">
                                 <connections>
                                     <segue destination="UyP-jr-iu0" kind="show" identifier="ThumbCollectionSegue" id="scy-RU-wIb"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem enabled="NO" id="9XB-ls-rjN">
-                                <connections>
-                                    <segue destination="0tL-nr-Aac" kind="show" identifier="ThumbManualSegue" id="uPs-gJ-Xm8"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -94,67 +88,6 @@
             </objects>
             <point key="canvasLocation" x="1591" y="120"/>
         </scene>
-        <!--Thumbnail View Controller-->
-        <scene sceneID="ecb-wv-JJU">
-            <objects>
-                <viewController id="KM2-9o-7Ul" customClass="ThumbnailViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Nj5-Me-JMd">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMh-sg-SUv" customClass="PDFView">
-                                <rect key="frame" x="0.0" y="20" width="768" height="768"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xW7-Nb-Iez">
-                                <rect key="frame" x="0.0" y="788" width="768" height="251"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGI-ds-K28" userLabel="Content View" customClass="PDFThumbnailView">
-                                        <rect key="frame" x="0.0" y="0.0" width="1000" height="251.5"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="1000" id="MmH-lP-VRx"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="DGI-ds-K28" firstAttribute="height" secondItem="xW7-Nb-Iez" secondAttribute="height" id="N3K-LB-5To"/>
-                                    <constraint firstItem="DGI-ds-K28" firstAttribute="leading" secondItem="xW7-Nb-Iez" secondAttribute="leading" id="ZLS-fI-3Li"/>
-                                    <constraint firstItem="DGI-ds-K28" firstAttribute="top" secondItem="xW7-Nb-Iez" secondAttribute="top" id="gxb-ZG-Eyp"/>
-                                    <constraint firstAttribute="bottom" secondItem="DGI-ds-K28" secondAttribute="bottom" id="hSL-wh-ENq"/>
-                                    <constraint firstAttribute="trailing" secondItem="DGI-ds-K28" secondAttribute="trailing" id="tle-0k-7U6"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="xW7-Nb-Iez" firstAttribute="top" secondItem="AMh-sg-SUv" secondAttribute="bottom" id="DIO-lu-5f9"/>
-                            <constraint firstItem="AMh-sg-SUv" firstAttribute="trailing" secondItem="r0Y-dO-hZM" secondAttribute="trailing" id="EkC-IJ-EFW"/>
-                            <constraint firstItem="AMh-sg-SUv" firstAttribute="height" secondItem="Nj5-Me-JMd" secondAttribute="height" multiplier="0.75" id="Y8r-Uw-213"/>
-                            <constraint firstItem="xW7-Nb-Iez" firstAttribute="trailing" secondItem="r0Y-dO-hZM" secondAttribute="trailing" id="b8R-uk-rRd"/>
-                            <constraint firstItem="xW7-Nb-Iez" firstAttribute="leading" secondItem="r0Y-dO-hZM" secondAttribute="leading" id="pCw-MX-8Al"/>
-                            <constraint firstItem="AMh-sg-SUv" firstAttribute="top" secondItem="r0Y-dO-hZM" secondAttribute="top" id="q6b-9Y-Uh8"/>
-                            <constraint firstItem="xW7-Nb-Iez" firstAttribute="height" secondItem="r0Y-dO-hZM" secondAttribute="height" multiplier="0.25" id="rX7-Ql-DHi"/>
-                            <constraint firstItem="AMh-sg-SUv" firstAttribute="leading" secondItem="r0Y-dO-hZM" secondAttribute="leading" id="t5y-H7-Oak"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="r0Y-dO-hZM"/>
-                    </view>
-                    <connections>
-                        <outlet property="pdfThumbnailView" destination="DGI-ds-K28" id="19j-bR-obl"/>
-                        <outlet property="pdfView" destination="AMh-sg-SUv" id="fIJ-J0-eQM"/>
-                        <outlet property="uiView" destination="Nj5-Me-JMd" id="vLS-kS-Djo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iqn-Bi-Zfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Co4-ce-1eS">
-                    <connections>
-                        <action selector="goToSelectedPage:" destination="KM2-9o-7Ul" id="F6g-Lm-W1A"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="-499" y="832"/>
-        </scene>
         <!--Thumb Collection View Controller-->
         <scene sceneID="58f-bd-mac">
             <objects>
@@ -204,94 +137,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUB-jy-BHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="47S-S1-4Kg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="287.5" y="831.4453125"/>
-        </scene>
-        <!--Thumb Manual View Controller-->
-        <scene sceneID="obd-rT-9PN">
-            <objects>
-                <viewController id="0tL-nr-Aac" customClass="ThumbManualViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="f31-Mn-NCo">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="goQ-Wb-vQF">
-                                <rect key="frame" x="108" y="109" width="200" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="voL-tm-rCY" appends="YES" id="Zgq-qa-elL"/>
-                                </connections>
-                            </imageView>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ZO-eh-bYx">
-                                <rect key="frame" x="108" y="396" width="200" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Pqv-aA-0Re" appends="YES" id="Bzc-mz-Dey"/>
-                                </connections>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <viewLayoutGuide key="safeArea" id="ew2-Cd-eoX"/>
-                    </view>
-                    <connections>
-                        <outlet property="imageView1" destination="goQ-Wb-vQF" id="Pt3-tn-d3n"/>
-                        <outlet property="imageView2" destination="7ZO-eh-bYx" id="yv2-cu-sra"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wTk-y7-wRC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="TYp-TT-SRQ" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="voL-tm-rCY">
-                    <connections>
-                        <segue destination="TYp-TT-SRQ" kind="unwind" identifier="SaveSelectedPage" unwindAction="unwindWithSelectedPageWithSegue:" id="4Wm-c9-y7a"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="Pqv-aA-0Re">
-                    <connections>
-                        <segue destination="TYp-TT-SRQ" kind="unwind" identifier="SaveSelectedPage" unwindAction="unwindWithSelectedPageWithSegue:" id="6zO-AA-ogP"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="1118.840579710145" y="832.33695652173924"/>
-        </scene>
-        <!--Outline-->
-        <scene sceneID="qTP-bc-P0l">
-            <objects>
-                <viewController id="a25-JK-3aN" customClass="OutlineViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="B6D-82-pcC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLM-b9-8vE">
-                                <rect key="frame" x="153" y="142" width="69" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="TOC Page"/>
-                                <connections>
-                                    <segue destination="idR-ea-Oyr" kind="unwind" identifier="SaveSelectedOutline" unwindAction="unwindWithSelectedOutlineWithSegue:" id="0Nf-Ui-mwO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLr-3P-ikV">
-                                <rect key="frame" x="153" y="216" width="69" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Chapter 6"/>
-                                <connections>
-                                    <segue destination="idR-ea-Oyr" kind="unwind" identifier="SaveSelectedOutline" unwindAction="unwindWithSelectedOutlineWithSegue:" id="EK9-Kf-euv"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="Y7o-Ib-MyF"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Outline" id="JEp-1P-YAt"/>
-                    <connections>
-                        <outlet property="chapter6Button" destination="CLr-3P-ikV" id="h6L-TY-LN3"/>
-                        <outlet property="tocButton" destination="aLM-b9-8vE" id="rgs-sM-Hma"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eKH-Nq-Ti5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="idR-ea-Oyr" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1932" y="823.53823088455783"/>
+            <point key="canvasLocation" x="795" y="831"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ofu-Y0-YSK">
