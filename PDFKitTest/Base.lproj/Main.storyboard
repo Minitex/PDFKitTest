@@ -30,7 +30,7 @@
                             </barButtonItem>
                             <barButtonItem image="TOC" id="ksg-jZ-A6p">
                                 <connections>
-                                    <segue destination="BKk-lm-LMW" kind="show" id="Efa-b1-bin"/>
+                                    <segue destination="BKk-lm-LMW" kind="show" identifier="TOCSegue" id="Efa-b1-bin"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Thumbnails" id="xv4-am-msm">
@@ -53,21 +53,30 @@
             </objects>
             <point key="canvasLocation" x="796" y="118.29085457271366"/>
         </scene>
-        <!--Table View Controller-->
+        <!--View Controller-->
         <scene sceneID="Gh6-42-w5s">
             <objects>
-                <tableViewController id="BKk-lm-LMW" sceneMemberID="viewController">
+                <tableViewController id="BKk-lm-LMW" customClass="TOCViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dFa-68-cNu">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xRa-GB-ba9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TOCCell" textLabel="9lY-yu-p68" style="IBUITableViewCellStyleDefault" id="xRa-GB-ba9">
                                 <rect key="frame" x="0.0" y="28" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xRa-GB-ba9" id="WPT-ud-27b">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9lY-yu-p68">
+                                            <rect key="frame" x="20" y="0.0" width="733" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>

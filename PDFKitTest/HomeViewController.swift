@@ -112,6 +112,15 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
         print("going to the manual thumbnail outline")
       }
     }
+
+    if identifier == "TOCSegue" {
+      if let upcoming = segue.destination as? TOCViewController {
+        upcoming.document = document
+        upcoming.title = "Table of Contents"
+        print("going to table of contents")
+      }
+    }
+    
   }
 
 

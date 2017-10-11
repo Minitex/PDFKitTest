@@ -17,6 +17,7 @@
 		52058F901F75B24F0082BA62 /* NumberTheoryAndAlgebra.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 52058F8E1F75B24F0082BA62 /* NumberTheoryAndAlgebra.pdf */; };
 		52058F911F75B24F0082BA62 /* FinancialAccounting.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 52058F8F1F75B24F0082BA62 /* FinancialAccounting.pdf */; };
 		52058F941F75B3B40082BA62 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52058F931F75B3B30082BA62 /* PDFKit.framework */; };
+		525EC7281F8E6C61003FFD12 /* TOCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EC7271F8E6C61003FFD12 /* TOCViewController.swift */; };
 		527C6CB51F880C840065869F /* ThumbCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */; };
 		527C6CB71F88331C0065869F /* ThumbnailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */; };
 		52AB57451F7AC8FA00BBA3D3 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB57441F7AC8FA00BBA3D3 /* OutlineViewController.swift */; };
@@ -58,6 +59,7 @@
 		52058F8E1F75B24F0082BA62 /* NumberTheoryAndAlgebra.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NumberTheoryAndAlgebra.pdf; sourceTree = "<group>"; };
 		52058F8F1F75B24F0082BA62 /* FinancialAccounting.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FinancialAccounting.pdf; sourceTree = "<group>"; };
 		52058F931F75B3B30082BA62 /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
+		525EC7271F8E6C61003FFD12 /* TOCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOCViewController.swift; sourceTree = "<group>"; };
 		527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbCollectionViewController.swift; sourceTree = "<group>"; };
 		527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageCell.swift; sourceTree = "<group>"; };
 		52AB57441F7AC8FA00BBA3D3 /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				52AB57441F7AC8FA00BBA3D3 /* OutlineViewController.swift */,
 				527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */,
 				527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */,
+				525EC7271F8E6C61003FFD12 /* TOCViewController.swift */,
 			);
 			path = PDFKitTest;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				527C6CB51F880C840065869F /* ThumbCollectionViewController.swift in Sources */,
 				52058F601F75B17B0082BA62 /* AppDelegate.swift in Sources */,
 				52F6A9EE1F79B24D00A461D3 /* ThumbnailViewController.swift in Sources */,
+				525EC7281F8E6C61003FFD12 /* TOCViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
