@@ -14,12 +14,27 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
   var document: PDFDocument?
   var selectedOutline: PDFOutline?
   var selectedPage: PDFPage?
+  var searchResults: [PDFSelection]?
+  var currentSelection: PDFSelection?
+  
   let documentName: String = "FinancialAccounting"
+
+  //let searchTerm = "minnesota"
+  let searchTerm = "graduate"
+
+
 
   @IBOutlet weak var pdfView: PDFView?
 
-  @IBAction func keywordSearch(_ sender: Any) {
-    print("keyword search")
+  @IBAction func unwindWithCurrentSelection(segue: UIStoryboardSegue) {
+    print("unwindWithCurrentSelection")
+
+    if let searchResultsViewController = segue.source as? SearchResultsViewController {
+      currentSelection = searchResultsViewController.currentSelection
+      currentSelection?.color = UIColor.yellow
+      pdfView?.currentSelection = currentSelection
+      pdfView?.scrollSelectionToVisible(nil)
+    }
   }
 
   @IBAction func unwindWithSelectedPage(segue: UIStoryboardSegue) {
@@ -91,6 +106,17 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
         print("going to About Page")
       }
     }
+
+    if identifier == "SearchSegue" {
+      if let upcoming = segue.destination as? SearchResultsViewController {
+        upcoming.document = document
+        upcoming.title = "Results for \"\(searchTerm)\""
+        upcoming.searchTerm = searchTerm
+        upcoming.searchResults = searchResults
+        print("going to search results")
+      }
+    }
+
   }
 
 }

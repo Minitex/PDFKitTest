@@ -21,6 +21,7 @@
 		525EC72A1F8EBF30003FFD12 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EC7291F8EBF30003FFD12 /* AboutViewController.swift */; };
 		527C6CB51F880C840065869F /* ThumbCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */; };
 		527C6CB71F88331C0065869F /* ThumbnailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */; };
+		529CF3991F900A3D0098B62C /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CF3981F900A3D0098B62C /* SearchResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		525EC7291F8EBF30003FFD12 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbCollectionViewController.swift; sourceTree = "<group>"; };
 		527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageCell.swift; sourceTree = "<group>"; };
+		529CF3981F900A3D0098B62C /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */,
 				525EC7271F8E6C61003FFD12 /* TOCViewController.swift */,
 				525EC7291F8EBF30003FFD12 /* AboutViewController.swift */,
+				529CF3981F900A3D0098B62C /* SearchResultsViewController.swift */,
 			);
 			path = PDFKitTest;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				527C6CB71F88331C0065869F /* ThumbnailImageCell.swift in Sources */,
 				527C6CB51F880C840065869F /* ThumbCollectionViewController.swift in Sources */,
 				52058F601F75B17B0082BA62 /* AppDelegate.swift in Sources */,
+				529CF3991F900A3D0098B62C /* SearchResultsViewController.swift in Sources */,
 				525EC7281F8E6C61003FFD12 /* TOCViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
