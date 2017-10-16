@@ -19,6 +19,7 @@
 		52058F941F75B3B40082BA62 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52058F931F75B3B30082BA62 /* PDFKit.framework */; };
 		525EC7281F8E6C61003FFD12 /* TOCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EC7271F8E6C61003FFD12 /* TOCViewController.swift */; };
 		525EC72A1F8EBF30003FFD12 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EC7291F8EBF30003FFD12 /* AboutViewController.swift */; };
+		526AFA2C1F956A4600CB2C91 /* SearchAsyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526AFA2B1F956A4600CB2C91 /* SearchAsyncViewController.swift */; };
 		527C6CB51F880C840065869F /* ThumbCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */; };
 		527C6CB71F88331C0065869F /* ThumbnailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */; };
 		529CF3991F900A3D0098B62C /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CF3981F900A3D0098B62C /* SearchResultsViewController.swift */; };
@@ -60,6 +61,7 @@
 		52058F931F75B3B30082BA62 /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
 		525EC7271F8E6C61003FFD12 /* TOCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOCViewController.swift; sourceTree = "<group>"; };
 		525EC7291F8EBF30003FFD12 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		526AFA2B1F956A4600CB2C91 /* SearchAsyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAsyncViewController.swift; sourceTree = "<group>"; };
 		527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbCollectionViewController.swift; sourceTree = "<group>"; };
 		527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageCell.swift; sourceTree = "<group>"; };
 		529CF3981F900A3D0098B62C /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				525EC7271F8E6C61003FFD12 /* TOCViewController.swift */,
 				525EC7291F8EBF30003FFD12 /* AboutViewController.swift */,
 				529CF3981F900A3D0098B62C /* SearchResultsViewController.swift */,
+				526AFA2B1F956A4600CB2C91 /* SearchAsyncViewController.swift */,
 			);
 			path = PDFKitTest;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				527C6CB71F88331C0065869F /* ThumbnailImageCell.swift in Sources */,
 				527C6CB51F880C840065869F /* ThumbCollectionViewController.swift in Sources */,
 				52058F601F75B17B0082BA62 /* AppDelegate.swift in Sources */,
+				526AFA2C1F956A4600CB2C91 /* SearchAsyncViewController.swift in Sources */,
 				529CF3991F900A3D0098B62C /* SearchResultsViewController.swift in Sources */,
 				525EC7281F8E6C61003FFD12 /* TOCViewController.swift in Sources */,
 			);

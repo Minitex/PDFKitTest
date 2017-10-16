@@ -62,6 +62,12 @@ class SearchResultsViewController: UITableViewController, PDFDocumentDelegate {
       //print("search result 5: result string: \(String(describing: result.pages[0].string))")
     }
 
+    /*
+    if (document?.isFinding)! {
+      document?.cancelFindString()
+    }
+ */
+
   }
     // MARK: - Table view data source
 

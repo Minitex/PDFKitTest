@@ -43,10 +43,10 @@
                                     <segue destination="UyP-jr-iu0" kind="show" identifier="ThumbCollectionSegue" id="scy-RU-wIb"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" systemItem="search" id="pof-hg-P8J">
+                            <barButtonItem systemItem="search" id="pof-hg-P8J">
                                 <color key="tintColor" red="0.10688317567110062" green="0.52444547414779663" blue="0.24801081418991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <action selector="asynchKeywordSearch:" destination="BYZ-38-t0r" id="raO-z5-jjy"/>
+                                    <segue destination="Yf6-Yc-MnS" kind="show" identifier="SearchAsyncSegue" id="ICw-Cg-uEJ"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -147,7 +147,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0e-VU-pWZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="kig-gV-5lW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="795" y="831"/>
+            <point key="canvasLocation" x="1163" y="831"/>
         </scene>
         <!--Thumb Collection View Controller-->
         <scene sceneID="58f-bd-mac">
@@ -198,7 +198,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUB-jy-BHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="47S-S1-4Kg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="147" y="831"/>
+            <point key="canvasLocation" x="481" y="830"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="SF9-9s-AeK">
@@ -229,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OMV-jA-JoQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1449" y="831"/>
+            <point key="canvasLocation" x="1821" y="830"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ofu-Y0-YSK">
@@ -248,6 +248,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0q-3B-Y5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-9" y="118"/>
+        </scene>
+        <!--Search Async View Controller-->
+        <scene sceneID="hhe-gt-NYe">
+            <objects>
+                <tableViewController id="Yf6-Yc-MnS" customClass="SearchAsyncViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="rZz-Gb-pkD">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchAsyncResultCell" textLabel="BgD-t4-cuN" detailTextLabel="lLl-IF-G1V" style="IBUITableViewCellStyleSubtitle" id="NDu-iR-Ezq">
+                                <rect key="frame" x="0.0" y="28" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NDu-iR-Ezq" id="RHS-D1-aZk">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BgD-t4-cuN">
+                                            <rect key="frame" x="20" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lLl-IF-G1V">
+                                            <rect key="frame" x="20" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="81v-rv-A5k" kind="unwind" identifier="SaveCurrentSelection" unwindAction="unwindWithCurrentSelectionWithSegue:" id="uKl-5K-Kgk"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Yf6-Yc-MnS" id="XhN-Zs-caU"/>
+                            <outlet property="delegate" destination="Yf6-Yc-MnS" id="yeg-WT-JhM"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rIv-ZF-fin" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="81v-rv-A5k" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-217" y="830"/>
         </scene>
     </scenes>
     <resources>
