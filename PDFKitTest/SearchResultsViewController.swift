@@ -58,6 +58,7 @@ class SearchResultsViewController: UITableViewController, PDFDocumentDelegate {
       print("search result 2: selectionsByLine[0]: \(result.selectionsByLine()[0])")
       print("search result 3: pages count: \(result.pages.count)")
       print("search result 4: bounds: \(result.bounds(for: result.pages[0]))\n")
+      
       //print("search result 5: result string: \(String(describing: result.pages[0].string))")
     }
 
@@ -81,7 +82,9 @@ class SearchResultsViewController: UITableViewController, PDFDocumentDelegate {
         // Configure the cell...
       //cell.textLabel?.text = indexPath.row.description
 
-      cell.textLabel?.text = searchResults![indexPath.row].bounds(for: searchResults![indexPath.row].pages[0]).debugDescription
+      //cell.textLabel?.text = searchResults![indexPath.row].bounds(for: searchResults![indexPath.row].pages[0]).debugDescription
+      searchResults![indexPath.row].extendForLineBoundaries()
+      cell.textLabel?.text = searchResults![indexPath.row].selectionsByLine()[0].string
       cell.detailTextLabel?.text = "Page: \(String(describing: searchResults![indexPath.row].pages[0].label))"
       return cell
   }

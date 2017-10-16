@@ -38,9 +38,15 @@
                                     <segue destination="BKk-lm-LMW" kind="show" identifier="TOCSegue" id="Efa-b1-bin"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Thumbnails" id="xv4-am-msm">
+                            <barButtonItem title="Thumbs" id="xv4-am-msm">
                                 <connections>
                                     <segue destination="UyP-jr-iu0" kind="show" identifier="ThumbCollectionSegue" id="scy-RU-wIb"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" systemItem="search" id="pof-hg-P8J">
+                                <color key="tintColor" red="0.10688317567110062" green="0.52444547414779663" blue="0.24801081418991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="asynchKeywordSearch:" destination="BYZ-38-t0r" id="raO-z5-jjy"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
