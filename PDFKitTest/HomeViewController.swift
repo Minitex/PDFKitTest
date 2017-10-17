@@ -16,42 +16,14 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
   var selectedPage: PDFPage?
   var searchResults: [PDFSelection]?
   var currentSelection: PDFSelection?
-  
+  var highlightedPage: PDFPage?
+
   let documentName: String = "FinancialAccounting"
 
   //let searchTerm = "minnesota"
   let searchTerm = "graduate"
 
   @IBOutlet weak var pdfView: PDFView?
-
-  @IBAction func asynchKeywordSearch(_ sender: Any) {
-    print("asynchKeywordSearch!")
-
-    //print("keyword search")
-
-    if (document?.isFinding)! {
-      document?.cancelFindString()
-    }
-
-    /*
-    if searchResults == nil {
-      searchResults = [PDFSelection]()
-    }
- */
-
-    document?.beginFindString(searchTerm, withOptions: [NSString.CompareOptions.caseInsensitive])
-    /*
-    searchResults = document?.findString(searchTerm, withOptions: [NSString.CompareOptions.caseInsensitive]) as [PDFSelection]?
-    print("search results: \(String(describing: searchResults)), count: \(String(describing: searchResults?.count))")
-    for result in searchResults! {
-      print("search result 1: pages:\(result.pages), string:\(String(describing: result.string)), attributedString:\(String(describing: result.attributedString))")
-      print("search result 2: selectionsByLine[0]: \(result.selectionsByLine()[0])")
-      print("search result 3: pages count: \(result.pages.count)")
-      print("search result 4: bounds: \(result.bounds(for: result.pages[0]))\n")
-      print("search result 5: result string: \(String(describing: result.pages[0].string))")
-    }
- */
-  }
 
   @IBAction func unwindWithCurrentSelection(segue: UIStoryboardSegue) {
     print("unwindWithCurrentSelection")
@@ -161,6 +133,15 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
         upcoming.searchTerm = searchTerm
         upcoming.searchResults = searchResults
         print("going to search results")
+      }
+    }
+
+    if identifier == "HighlightSegue" {
+      if let upcoming = segue.destination as? HighlightPageViewController {
+        upcoming.document = document
+        upcoming.title = "Highlighted Page"
+        upcoming.highlightedPage = document?.page(at: 12)
+        print("going to highlight page")
       }
     }
 

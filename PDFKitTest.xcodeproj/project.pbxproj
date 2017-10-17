@@ -23,6 +23,7 @@
 		527C6CB51F880C840065869F /* ThumbCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */; };
 		527C6CB71F88331C0065869F /* ThumbnailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */; };
 		529CF3991F900A3D0098B62C /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CF3981F900A3D0098B62C /* SearchResultsViewController.swift */; };
+		52FED82E1F96B1F2003970E0 /* HighlightPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED82D1F96B1F2003970E0 /* HighlightPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		527C6CB41F880C840065869F /* ThumbCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbCollectionViewController.swift; sourceTree = "<group>"; };
 		527C6CB61F88331C0065869F /* ThumbnailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageCell.swift; sourceTree = "<group>"; };
 		529CF3981F900A3D0098B62C /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		52FED82D1F96B1F2003970E0 /* HighlightPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				525EC7291F8EBF30003FFD12 /* AboutViewController.swift */,
 				529CF3981F900A3D0098B62C /* SearchResultsViewController.swift */,
 				526AFA2B1F956A4600CB2C91 /* SearchAsyncViewController.swift */,
+				52FED82D1F96B1F2003970E0 /* HighlightPageViewController.swift */,
 			);
 			path = PDFKitTest;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				525EC72A1F8EBF30003FFD12 /* AboutViewController.swift in Sources */,
+				52FED82E1F96B1F2003970E0 /* HighlightPageViewController.swift in Sources */,
 				52058F621F75B17B0082BA62 /* HomeViewController.swift in Sources */,
 				527C6CB71F88331C0065869F /* ThumbnailImageCell.swift in Sources */,
 				527C6CB51F880C840065869F /* ThumbCollectionViewController.swift in Sources */,
