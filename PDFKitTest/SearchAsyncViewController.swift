@@ -9,7 +9,7 @@
 import UIKit
 import PDFKit
 
-class SearchAsyncViewController: UITableViewController, PDFDocumentDelegate {
+class SearchAsyncViewController: UITableViewController, PDFDocumentDelegate, UITextFieldDelegate {
 
   var document: PDFDocument?
   var searchResults: [PDFSelection]?
@@ -17,23 +17,26 @@ class SearchAsyncViewController: UITableViewController, PDFDocumentDelegate {
   var searchTerm: String?
   var currentSelection: PDFSelection?
 
+ 
+
+  
   let reuseIdentifier = "SearchAsyncResultCell"
 
   override func viewDidLoad() {
-        super.viewDidLoad()
+    super.viewDidLoad()
 
     if let document = document {
       document.delegate = self
     }
 
-    if let searchResults = searchResults {
-      print("searchResults: \(searchResults)")
-    }
 
+
+    /*
     if let searchTerm = searchTerm {
       print("searchTerm: \(searchTerm)")
       search()
     }
+ */
 
     // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -42,23 +45,22 @@ class SearchAsyncViewController: UITableViewController, PDFDocumentDelegate {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
   }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+override func didReceiveMemoryWarning() {
+  super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+}
 
-  func search() {
-    if (document?.isFinding)! {
-      document?.cancelFindString()
-    }
+func search() {
+  if (document?.isFinding)! {
+    document?.cancelFindString()
+  }
 
 
-     if searchResults == nil {
+  if searchResults == nil {
      searchResults = [PDFSelection]()
-     }
+   }
 
-
-    document?.beginFindString(searchTerm!, withOptions: [NSString.CompareOptions.caseInsensitive])
+  document?.beginFindString(searchTerm!, withOptions: [NSString.CompareOptions.caseInsensitive])
 
     /*
     print("keyword search")
@@ -74,30 +76,44 @@ class SearchAsyncViewController: UITableViewController, PDFDocumentDelegate {
     }
 */
 
-  }
+}
 
-  // MARK: PDFDocumentDelegate
-  func didMatchString(_ instance: PDFSelection) {
-    print("found a match!")
-    searchResults?.append(instance)
+// MARK: PDFDocumentDelegate
+func didMatchString(_ instance: PDFSelection) {
+  print("found a match!")
+  searchResults?.append(instance)
 
-    let result = instance
+  let result = instance
 
-    print("search result 1: pages:\(result.pages), string:\(String(describing: result.string)), attributedString:\(String(describing: result.attributedString))")
-    print("search result 2: selectionsByLine[0]: \(result.selectionsByLine()[0])")
-    print("search result 3: pages count: \(result.pages.count)")
-    print("search result 4: bounds: \(result.bounds(for: result.pages[0]))\n")
-    print("search result 5: result string: \(String(describing: result.pages[0].string))")
-    print("search result 6: result extend: \(String(describing: result.extendForLineBoundaries()))")
-    //result.extendForLineBoundaries()
-    print("search result 7: selectionsByLine[0]: \(result.selectionsByLine()[0])")
+  print("search result 1: pages:\(result.pages), string:\(String(describing: result.string)), attributedString:\(String(describing: result.attributedString))")
+  print("search result 2: selectionsByLine[0]: \(result.selectionsByLine()[0])")
+  print("search result 3: pages count: \(result.pages.count)")
+  print("search result 4: bounds: \(result.bounds(for: result.pages[0]))\n")
+  print("search result 5: result string: \(String(describing: result.pages[0].string))")
+  print("search result 6: result extend: \(String(describing: result.extendForLineBoundaries()))")
+  //result.extendForLineBoundaries()
+  print("search result 7: selectionsByLine[0]: \(result.selectionsByLine()[0])")
 
+  //print("search result 6: result attriubtedString: \(String(describing: result.pages[0].attributedString))")
 
-    //print("search result 6: result attriubtedString: \(String(describing: result.pages[0].attributedString))")
+  //let pageString = result.pages[0].string
+  self.tableView.reloadData()
+}
 
-    //let pageString = result.pages[0].string
+  // MARK: - Textfield Delegate
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    print("pressed return!")
+
+    if let searchTerm = searchTerm {
+      print("searchTerm: \(searchTerm)")
+      search()
+    }
+
     self.tableView.reloadData()
+    textField.resignFirstResponder()
+    return true
   }
+
 
   // MARK: - Table view data source
 
@@ -108,7 +124,11 @@ class SearchAsyncViewController: UITableViewController, PDFDocumentDelegate {
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
-    return searchResults!.count
+    if let searchResults = searchResults {
+      print("searchResults: \(searchResults)")
+      return searchResults.count
+    }
+    return 0
   }
 
 

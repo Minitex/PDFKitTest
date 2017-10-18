@@ -23,11 +23,6 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="PDF" id="b9G-fh-GLK">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="search" id="fA5-vk-eMT">
-                                <connections>
-                                    <segue destination="VST-6p-hSj" kind="show" identifier="SearchSegue" id="U8P-4s-PXW"/>
-                                </connections>
-                            </barButtonItem>
                             <barButtonItem title="About" id="9M8-1N-9is">
                                 <connections>
                                     <segue destination="reC-Ix-5JG" kind="show" identifier="AboutSegue" id="uTc-QI-yUg"/>
@@ -44,16 +39,11 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="search" id="pof-hg-P8J">
-                                <color key="tintColor" red="0.10688317567110062" green="0.52444547414779663" blue="0.24801081418991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="Yf6-Yc-MnS" kind="show" identifier="SearchAsyncSegue" id="ICw-Cg-uEJ"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="compose" id="Vrv-2P-syh">
-                                <connections>
-                                    <segue destination="H3a-ci-FDv" kind="show" identifier="HighlightSegue" id="vPT-qZ-SQU"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem enabled="NO" id="Vrv-2P-syh"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -314,11 +304,25 @@
                             <outlet property="delegate" destination="Yf6-Yc-MnS" id="yeg-WT-JhM"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="7Lj-aq-R8D">
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a word" minimumFontSize="17" id="FLu-Vf-ofo">
+                            <rect key="frame" x="85" y="7" width="205" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            <connections>
+                                <outlet property="delegate" destination="Yf6-Yc-MnS" id="Yzo-B4-fad"/>
+                            </connections>
+                        </textField>
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="xzT-vW-ebe"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rIv-ZF-fin" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="81v-rv-A5k" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-217" y="830"/>
+            <point key="canvasLocation" x="-218.40000000000001" y="829.83508245877067"/>
         </scene>
     </scenes>
     <resources>
