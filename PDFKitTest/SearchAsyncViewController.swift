@@ -35,7 +35,6 @@ class SearchAsyncViewController: UITableViewController, PDFDocumentDelegate, UIT
     if searchTerm != nil {
       searchBox.text = searchTerm
     }
-
   }
 
   override func didReceiveMemoryWarning() {
@@ -116,10 +115,9 @@ class SearchAsyncViewController: UITableViewController, PDFDocumentDelegate, UIT
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-
     searchResults![indexPath.row].extendForLineBoundaries()
-    cell.textLabel?.text = searchResults![indexPath.row].selectionsByLine()[0].string
-    cell.detailTextLabel?.text = "Page: \(String(describing: searchResults![indexPath.row].pages[0].label))"
+    cell.textLabel?.text = "Page: \(searchResults![indexPath.row].pages[0].label ?? "")"
+    cell.detailTextLabel?.text = searchResults![indexPath.row].selectionsByLine()[0].string
     return cell
   }
 
