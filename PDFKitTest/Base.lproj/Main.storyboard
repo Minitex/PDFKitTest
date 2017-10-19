@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X72-GF-ARr">
-    <device id="ipad9_7" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,16 +15,17 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="PDFView">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="PDF" id="b9G-fh-GLK">
                         <rightBarButtonItems>
-                            <barButtonItem enabled="NO" id="fA5-vk-eMT">
+                            <barButtonItem title="About" id="9M8-1N-9is">
                                 <connections>
-                                    <action selector="keywordSearch:" destination="BYZ-38-t0r" id="aCo-3L-TSc"/>
+                                    <segue destination="reC-Ix-5JG" kind="show" identifier="AboutSegue" id="uTc-QI-yUg"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="TOC" id="ksg-jZ-A6p">
@@ -33,18 +33,20 @@
                                     <segue destination="BKk-lm-LMW" kind="show" identifier="TOCSegue" id="Efa-b1-bin"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Thumbnails" id="xv4-am-msm">
+                            <barButtonItem title="Thumbs" id="xv4-am-msm">
                                 <connections>
                                     <segue destination="UyP-jr-iu0" kind="show" identifier="ThumbCollectionSegue" id="scy-RU-wIb"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" id="9XB-ls-rjN">
+                            <barButtonItem systemItem="search" id="pof-hg-P8J">
                                 <connections>
-                                    <segue destination="0tL-nr-Aac" kind="show" identifier="ThumbManualSegue" id="uPs-gJ-Xm8"/>
+                                    <segue destination="bus-76-aFj" kind="show" identifier="SearchAsyncSegue" id="ICw-Cg-uEJ"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem enabled="NO" id="Vrv-2P-syh"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="pdfView" destination="8bC-Xf-vdC" id="VFF-hK-o6m"/>
                     </connections>
@@ -53,24 +55,90 @@
             </objects>
             <point key="canvasLocation" x="796" y="118.29085457271366"/>
         </scene>
+        <!--Highlight Page View Controller-->
+        <scene sceneID="rRZ-hc-t5c">
+            <objects>
+                <viewController id="H3a-ci-FDv" customClass="HighlightPageViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="chH-3l-0zD" customClass="PDFView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="j4e-QV-vIT"/>
+                    </view>
+                    <connections>
+                        <outlet property="pdfView" destination="chH-3l-0zD" id="SRV-8m-XA8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RzZ-UK-PTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1546" y="116"/>
+        </scene>
+        <!--Search Results View Controller-->
+        <scene sceneID="auI-RL-lcY">
+            <objects>
+                <tableViewController id="VST-6p-hSj" customClass="SearchResultsViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ymo-5k-HXK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="SearchResultCell" textLabel="VAb-0u-AgI" detailTextLabel="RpM-Km-eP6" style="IBUITableViewCellStyleSubtitle" id="RBC-e2-HJC">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RBC-e2-HJC" id="8p8-nB-eH8">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VAb-0u-AgI">
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RpM-Km-eP6">
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="cBB-54-wim" kind="unwind" identifier="SaveCurrentSelection" unwindAction="unwindWithCurrentSelectionWithSegue:" id="GTn-qb-oMr"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VST-6p-hSj" id="rGG-c4-EF5"/>
+                            <outlet property="delegate" destination="VST-6p-hSj" id="ipO-ub-UkN"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wc4-b2-Ynb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cBB-54-wim" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2284" y="117"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="Gh6-42-w5s">
             <objects>
                 <tableViewController id="BKk-lm-LMW" customClass="TOCViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dFa-68-cNu">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TOCCell" textLabel="9lY-yu-p68" style="IBUITableViewCellStyleDefault" id="xRa-GB-ba9">
-                                <rect key="frame" x="0.0" y="28" width="768" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xRa-GB-ba9" id="WPT-ud-27b">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9lY-yu-p68">
-                                            <rect key="frame" x="20" y="0.0" width="733" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -92,75 +160,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0e-VU-pWZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="kig-gV-5lW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1591" y="120"/>
-        </scene>
-        <!--Thumbnail View Controller-->
-        <scene sceneID="ecb-wv-JJU">
-            <objects>
-                <viewController id="KM2-9o-7Ul" customClass="ThumbnailViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Nj5-Me-JMd">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMh-sg-SUv" customClass="PDFView">
-                                <rect key="frame" x="0.0" y="20" width="768" height="768"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xW7-Nb-Iez">
-                                <rect key="frame" x="0.0" y="788" width="768" height="251"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGI-ds-K28" userLabel="Content View" customClass="PDFThumbnailView">
-                                        <rect key="frame" x="0.0" y="0.0" width="1000" height="251.5"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="1000" id="MmH-lP-VRx"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="DGI-ds-K28" firstAttribute="height" secondItem="xW7-Nb-Iez" secondAttribute="height" id="N3K-LB-5To"/>
-                                    <constraint firstItem="DGI-ds-K28" firstAttribute="leading" secondItem="xW7-Nb-Iez" secondAttribute="leading" id="ZLS-fI-3Li"/>
-                                    <constraint firstItem="DGI-ds-K28" firstAttribute="top" secondItem="xW7-Nb-Iez" secondAttribute="top" id="gxb-ZG-Eyp"/>
-                                    <constraint firstAttribute="bottom" secondItem="DGI-ds-K28" secondAttribute="bottom" id="hSL-wh-ENq"/>
-                                    <constraint firstAttribute="trailing" secondItem="DGI-ds-K28" secondAttribute="trailing" id="tle-0k-7U6"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="xW7-Nb-Iez" firstAttribute="top" secondItem="AMh-sg-SUv" secondAttribute="bottom" id="DIO-lu-5f9"/>
-                            <constraint firstItem="AMh-sg-SUv" firstAttribute="trailing" secondItem="r0Y-dO-hZM" secondAttribute="trailing" id="EkC-IJ-EFW"/>
-                            <constraint firstItem="AMh-sg-SUv" firstAttribute="height" secondItem="Nj5-Me-JMd" secondAttribute="height" multiplier="0.75" id="Y8r-Uw-213"/>
-                            <constraint firstItem="xW7-Nb-Iez" firstAttribute="trailing" secondItem="r0Y-dO-hZM" secondAttribute="trailing" id="b8R-uk-rRd"/>
-                            <constraint firstItem="xW7-Nb-Iez" firstAttribute="leading" secondItem="r0Y-dO-hZM" secondAttribute="leading" id="pCw-MX-8Al"/>
-                            <constraint firstItem="AMh-sg-SUv" firstAttribute="top" secondItem="r0Y-dO-hZM" secondAttribute="top" id="q6b-9Y-Uh8"/>
-                            <constraint firstItem="xW7-Nb-Iez" firstAttribute="height" secondItem="r0Y-dO-hZM" secondAttribute="height" multiplier="0.25" id="rX7-Ql-DHi"/>
-                            <constraint firstItem="AMh-sg-SUv" firstAttribute="leading" secondItem="r0Y-dO-hZM" secondAttribute="leading" id="t5y-H7-Oak"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="r0Y-dO-hZM"/>
-                    </view>
-                    <connections>
-                        <outlet property="pdfThumbnailView" destination="DGI-ds-K28" id="19j-bR-obl"/>
-                        <outlet property="pdfView" destination="AMh-sg-SUv" id="fIJ-J0-eQM"/>
-                        <outlet property="uiView" destination="Nj5-Me-JMd" id="vLS-kS-Djo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iqn-Bi-Zfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Co4-ce-1eS">
-                    <connections>
-                        <action selector="goToSelectedPage:" destination="KM2-9o-7Ul" id="F6g-Lm-W1A"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="-499" y="832"/>
+            <point key="canvasLocation" x="1501.5999999999999" y="830.73463268365822"/>
         </scene>
         <!--Thumb Collection View Controller-->
         <scene sceneID="58f-bd-mac">
             <objects>
                 <collectionViewController id="UyP-jr-iu0" customClass="ThumbCollectionViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gdI-GL-mKJ">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LHw-By-S1U">
@@ -204,94 +211,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUB-jy-BHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="47S-S1-4Kg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="287.5" y="831.4453125"/>
+            <point key="canvasLocation" x="820" y="829.83508245877067"/>
         </scene>
-        <!--Thumb Manual View Controller-->
-        <scene sceneID="obd-rT-9PN">
+        <!--About View Controller-->
+        <scene sceneID="SF9-9s-AeK">
             <objects>
-                <viewController id="0tL-nr-Aac" customClass="ThumbManualViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="f31-Mn-NCo">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                <viewController id="reC-Ix-5JG" customClass="AboutViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fgn-4A-b8T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="goQ-Wb-vQF">
-                                <rect key="frame" x="108" y="109" width="200" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="voL-tm-rCY" appends="YES" id="Zgq-qa-elL"/>
-                                </connections>
-                            </imageView>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ZO-eh-bYx">
-                                <rect key="frame" x="108" y="396" width="200" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Pqv-aA-0Re" appends="YES" id="Bzc-mz-Dey"/>
-                                </connections>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <viewLayoutGuide key="safeArea" id="ew2-Cd-eoX"/>
-                    </view>
-                    <connections>
-                        <outlet property="imageView1" destination="goQ-Wb-vQF" id="Pt3-tn-d3n"/>
-                        <outlet property="imageView2" destination="7ZO-eh-bYx" id="yv2-cu-sra"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wTk-y7-wRC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="TYp-TT-SRQ" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="voL-tm-rCY">
-                    <connections>
-                        <segue destination="TYp-TT-SRQ" kind="unwind" identifier="SaveSelectedPage" unwindAction="unwindWithSelectedPageWithSegue:" id="4Wm-c9-y7a"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="Pqv-aA-0Re">
-                    <connections>
-                        <segue destination="TYp-TT-SRQ" kind="unwind" identifier="SaveSelectedPage" unwindAction="unwindWithSelectedPageWithSegue:" id="6zO-AA-ogP"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="1118.840579710145" y="832.33695652173924"/>
-        </scene>
-        <!--Outline-->
-        <scene sceneID="qTP-bc-P0l">
-            <objects>
-                <viewController id="a25-JK-3aN" customClass="OutlineViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="B6D-82-pcC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLM-b9-8vE">
-                                <rect key="frame" x="153" y="142" width="69" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="TOC Page"/>
-                                <connections>
-                                    <segue destination="idR-ea-Oyr" kind="unwind" identifier="SaveSelectedOutline" unwindAction="unwindWithSelectedOutlineWithSegue:" id="0Nf-Ui-mwO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLr-3P-ikV">
-                                <rect key="frame" x="153" y="216" width="69" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Chapter 6"/>
-                                <connections>
-                                    <segue destination="idR-ea-Oyr" kind="unwind" identifier="SaveSelectedOutline" unwindAction="unwindWithSelectedOutlineWithSegue:" id="EK9-Kf-euv"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ByP-dK-Tl2">
+                                <rect key="frame" x="20" y="321.5" width="335" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="Y7o-Ib-MyF"/>
+                        <constraints>
+                            <constraint firstItem="ByP-dK-Tl2" firstAttribute="leading" secondItem="Wnv-Ug-otd" secondAttribute="leading" constant="20" id="KWu-AW-T14"/>
+                            <constraint firstItem="ByP-dK-Tl2" firstAttribute="centerX" secondItem="fgn-4A-b8T" secondAttribute="centerX" id="qYw-ve-1cj"/>
+                            <constraint firstItem="ByP-dK-Tl2" firstAttribute="centerY" secondItem="fgn-4A-b8T" secondAttribute="centerY" id="zKb-RY-20S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wnv-Ug-otd"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Outline" id="JEp-1P-YAt"/>
                     <connections>
-                        <outlet property="chapter6Button" destination="CLr-3P-ikV" id="h6L-TY-LN3"/>
-                        <outlet property="tocButton" destination="aLM-b9-8vE" id="rgs-sM-Hma"/>
+                        <outlet property="aboutLabel" destination="ByP-dK-Tl2" id="Sfk-kJ-cfl"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eKH-Nq-Ti5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="idR-ea-Oyr" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OMV-jA-JoQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1932" y="823.53823088455783"/>
+            <point key="canvasLocation" x="2159.1999999999998" y="829.83508245877067"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ofu-Y0-YSK">
@@ -299,7 +250,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X72-GF-ARr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EN0-0x-f1a">
-                        <rect key="frame" x="0.0" y="20" width="768" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -310,6 +261,93 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0q-3B-Y5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-9" y="118"/>
+        </scene>
+        <!--Search Async View Controller-->
+        <scene sceneID="hhe-gt-NYe">
+            <objects>
+                <tableViewController id="Yf6-Yc-MnS" customClass="SearchAsyncViewController" customModule="PDFKitTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="rZz-Gb-pkD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchAsyncResultCell" textLabel="BgD-t4-cuN" detailTextLabel="lLl-IF-G1V" style="IBUITableViewCellStyleSubtitle" id="NDu-iR-Ezq">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NDu-iR-Ezq" id="RHS-D1-aZk">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BgD-t4-cuN">
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lLl-IF-G1V">
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="81v-rv-A5k" kind="unwind" identifier="SaveCurrentSelection" unwindAction="unwindWithCurrentSelectionWithSegue:" id="uKl-5K-Kgk"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Yf6-Yc-MnS" id="XhN-Zs-caU"/>
+                            <outlet property="delegate" destination="Yf6-Yc-MnS" id="yeg-WT-JhM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="7Lj-aq-R8D">
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a word" minimumFontSize="17" clearButtonMode="always" id="FLu-Vf-ofo">
+                            <rect key="frame" x="85" y="7" width="205" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            <connections>
+                                <outlet property="delegate" destination="Yf6-Yc-MnS" id="Yzo-B4-fad"/>
+                            </connections>
+                        </textField>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="lO5-hM-reJ">
+                            <connections>
+                                <segue destination="81v-rv-A5k" kind="unwind" unwindAction="unwindWithCurrentSelectionWithSegue:" id="1zF-64-H7y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchBox" destination="FLu-Vf-ofo" id="yYB-XS-SDV"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rIv-ZF-fin" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="81v-rv-A5k" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="120.8" y="829.83508245877067"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zwM-Dk-7bL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bus-76-aFj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kub-Ws-ll0">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Yf6-Yc-MnS" kind="relationship" relationship="rootViewController" id="UK4-Fq-5LM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pME-Sy-6t0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-580" y="830"/>
         </scene>
     </scenes>
     <resources>

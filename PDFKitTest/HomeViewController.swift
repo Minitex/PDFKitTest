@@ -11,36 +11,44 @@ import PDFKit
 
 class HomeViewController: UIViewController, PDFDocumentDelegate {
 
-  @IBOutlet weak var pdfView: PDFView?
-  var documentName: String?
   var document: PDFDocument?
   var selectedOutline: PDFOutline?
   var selectedPage: PDFPage?
-  
-  @IBAction func keywordSearch(_ sender: Any) {
-    print("keyword search")
-  }
+  var searchResults: [PDFSelection]?
+  var currentSelection: PDFSelection?
+  var highlightedPage: PDFPage?
+  var searchTerm: String?
 
-  @IBAction func unwindWithSelectedOutline(segue: UIStoryboardSegue) {
-    print("unwindWithSelectedOutline")
-    if let outlineViewController = segue.source as? OutlineViewController {
-      selectedOutline = outlineViewController.selectedOutline
-      print("selectedOutline: \(String(describing: selectedOutline?.description))")
-      print("on page: \(String(describing: selectedOutline?.destination?.page))")
+  let documentName: String = "FinancialAccounting"
 
-      pdfView?.go(to: (selectedOutline?.destination?.page)!)
-      
+  //let searchTerm = "minnesota"
+  //let searchTerm = "graduate"
+
+  @IBOutlet weak var pdfView: PDFView?
+
+  @IBAction func unwindWithCurrentSelection(segue: UIStoryboardSegue) {
+    print("unwindWithCurrentSelection")
+
+    if let searchResultsViewController = segue.source as? SearchResultsViewController {
+      currentSelection = searchResultsViewController.currentSelection
+      currentSelection?.color = UIColor.yellow
+      pdfView?.currentSelection = currentSelection
+      pdfView?.scrollSelectionToVisible(nil)
     }
+
+    if let searchAsyncViewController = segue.source as? SearchAsyncViewController {
+      currentSelection          = searchAsyncViewController.currentSelection
+      searchResults             = searchAsyncViewController.searchResults
+      currentSelection?.color   = UIColor.yellow
+      pdfView?.currentSelection = currentSelection
+      pdfView?.scrollSelectionToVisible(nil)
+    }
+
   }
 
   @IBAction func unwindWithSelectedPage(segue: UIStoryboardSegue) {
     print("unwindWithSelectedPage")
-    if let thumbManualViewController = segue.source as? ThumbManualViewController {
-      selectedPage = thumbManualViewController.selectedPage
-      print("on page: \(String(describing: selectedPage))")
-      pdfView?.go(to: selectedPage!)
-    }
-    
+
     if let thumbCollectionViewController = segue.source as? ThumbCollectionViewController {
       selectedPage = thumbCollectionViewController.selectedPage
       print("on page: \(String(describing: selectedPage))")
@@ -58,17 +66,17 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
 
-    documentName = "FinancialAccounting"
     if let documentURL = Bundle.main.url(forResource: documentName, withExtension: "pdf") {
-        document = PDFDocument(url: documentURL)
-        // Center document on gray background
-        pdfView?.autoScales = true
-        pdfView?.backgroundColor = UIColor.lightGray
-        pdfView?.usePageViewController(true, withViewOptions: nil)
+      document = PDFDocument(url: documentURL)
+      // Set delegate
+      document?.delegate = self
 
-        // Set delegate
-        document?.delegate = self
-        pdfView?.document = document
+      pdfView?.document = document
+      pdfView?.autoScales = true
+      pdfView?.backgroundColor = UIColor.lightGray
+      pdfView?.usePageViewController(true, withViewOptions: nil)
+
+      print("document metadata: \(String(describing: document?.documentAttributes))")
     }
 
   }
@@ -84,40 +92,11 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
       return
     }
 
-    /*
-     // OBE
-    if identifier == "ThumbnailSegue" {
-      //if let document = sender as? PDFDocument, // this doesn't work!
-      if let upcoming = segue.destination as? ThumbnailViewController {
-          upcoming.document = document
-          upcoming.title = "Thumbnails"
-          print("set document successfully!")
-          print("going to thumbnails")
-        }
-      }
- */
-
     if identifier == "ThumbCollectionSegue" {
       if let upcoming = segue.destination as? ThumbCollectionViewController {
         upcoming.document = document
         upcoming.title = "Thumbnails"
         print("going to the thumbnail collection")
-      }
-    }
-
-    if identifier == "OutlineSegue" {
-      if let upcoming = segue.destination as? OutlineViewController {
-        upcoming.document = document
-        upcoming.title = "Outline"
-        print("going to the outline")
-      }
-    }
-
-    if identifier == "ThumbManualSegue" {
-      if let upcoming = segue.destination as? ThumbManualViewController {
-        upcoming.document = document
-        upcoming.title = "Thumbnail Outline"
-        print("going to the manual thumbnail outline")
       }
     }
 
@@ -128,6 +107,47 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
         print("going to table of contents")
       }
     }
+
+    if identifier == "AboutSegue" {
+      if let upcoming = segue.destination as? AboutViewController {
+        upcoming.document = document
+        upcoming.title = "About This Book"
+        print("going to About Page")
+      }
+    }
+
+    if identifier == "SearchAsyncSegue" {
+      //if let upcoming = segue.destination as? SearchAsyncViewController {
+      if let destinationNavController = segue.destination as? UINavigationController {
+        if let upcoming = destinationNavController.topViewController as? SearchAsyncViewController {
+        upcoming.document = document
+        //upcoming.title = "Results for \"\(String(describing: searchTerm))\""
+        upcoming.searchTerm = searchTerm
+        upcoming.searchResults = searchResults
+        print("going to search results")
+        }
+      }
+    }
+
+    if identifier == "SearchSegue" {
+      if let upcoming = segue.destination as? SearchResultsViewController {
+        upcoming.document = document
+        upcoming.title = "Results for \"\(String(describing: searchTerm))\""
+        upcoming.searchTerm = searchTerm
+        upcoming.searchResults = searchResults
+        print("going to search results")
+      }
+    }
+
+    if identifier == "HighlightSegue" {
+      if let upcoming = segue.destination as? HighlightPageViewController {
+        upcoming.document = document
+        upcoming.title = "Highlighted Page"
+        upcoming.highlightedPage = document?.page(at: 12)
+        print("going to highlight page")
+      }
+    }
+
   }
 
 }
