@@ -40,7 +40,7 @@
                             </barButtonItem>
                             <barButtonItem systemItem="search" id="pof-hg-P8J">
                                 <connections>
-                                    <segue destination="Yf6-Yc-MnS" kind="show" identifier="SearchAsyncSegue" id="ICw-Cg-uEJ"/>
+                                    <segue destination="bus-76-aFj" kind="show" identifier="SearchAsyncSegue" id="ICw-Cg-uEJ"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem enabled="NO" id="Vrv-2P-syh"/>
@@ -160,7 +160,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0e-VU-pWZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="kig-gV-5lW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1163" y="831"/>
+            <point key="canvasLocation" x="1501.5999999999999" y="830.73463268365822"/>
         </scene>
         <!--Thumb Collection View Controller-->
         <scene sceneID="58f-bd-mac">
@@ -211,7 +211,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUB-jy-BHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="47S-S1-4Kg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="481" y="830"/>
+            <point key="canvasLocation" x="820" y="829.83508245877067"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="SF9-9s-AeK">
@@ -242,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OMV-jA-JoQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1821" y="830"/>
+            <point key="canvasLocation" x="2159.1999999999998" y="829.83508245877067"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ofu-Y0-YSK">
@@ -306,7 +306,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="7Lj-aq-R8D">
                         <nil key="title"/>
-                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a word" minimumFontSize="17" id="FLu-Vf-ofo">
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a word" minimumFontSize="17" clearButtonMode="always" id="FLu-Vf-ofo">
                             <rect key="frame" x="85" y="7" width="205" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <nil key="textColor"/>
@@ -316,13 +316,38 @@
                                 <outlet property="delegate" destination="Yf6-Yc-MnS" id="Yzo-B4-fad"/>
                             </connections>
                         </textField>
-                        <barButtonItem key="rightBarButtonItem" title="Clear" id="xzT-vW-ebe"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="lO5-hM-reJ">
+                            <connections>
+                                <segue destination="81v-rv-A5k" kind="unwind" unwindAction="unwindWithCurrentSelectionWithSegue:" id="1zF-64-H7y"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBox" destination="FLu-Vf-ofo" id="yYB-XS-SDV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rIv-ZF-fin" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="81v-rv-A5k" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-218.40000000000001" y="829.83508245877067"/>
+            <point key="canvasLocation" x="120.8" y="829.83508245877067"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zwM-Dk-7bL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bus-76-aFj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kub-Ws-ll0">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Yf6-Yc-MnS" kind="relationship" relationship="rootViewController" id="UK4-Fq-5LM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pME-Sy-6t0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-580" y="830"/>
         </scene>
     </scenes>
     <resources>

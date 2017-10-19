@@ -17,11 +17,12 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
   var searchResults: [PDFSelection]?
   var currentSelection: PDFSelection?
   var highlightedPage: PDFPage?
+  var searchTerm: String?
 
   let documentName: String = "FinancialAccounting"
 
   //let searchTerm = "minnesota"
-  let searchTerm = "graduate"
+  //let searchTerm = "graduate"
 
   @IBOutlet weak var pdfView: PDFView?
 
@@ -36,8 +37,9 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
     }
 
     if let searchAsyncViewController = segue.source as? SearchAsyncViewController {
-      currentSelection = searchAsyncViewController.currentSelection
-      currentSelection?.color = UIColor.yellow
+      currentSelection          = searchAsyncViewController.currentSelection
+      searchResults             = searchAsyncViewController.searchResults
+      currentSelection?.color   = UIColor.yellow
       pdfView?.currentSelection = currentSelection
       pdfView?.scrollSelectionToVisible(nil)
     }
@@ -84,8 +86,6 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
     // Dispose of any resources that can be recreated.
   }
 
-  
-
   // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let identifier = segue.identifier else {
@@ -116,20 +116,23 @@ class HomeViewController: UIViewController, PDFDocumentDelegate {
       }
     }
 
-    if identifier == "SearchSegue" {
-      if let upcoming = segue.destination as? SearchResultsViewController {
+    if identifier == "SearchAsyncSegue" {
+      //if let upcoming = segue.destination as? SearchAsyncViewController {
+      if let destinationNavController = segue.destination as? UINavigationController {
+        if let upcoming = destinationNavController.topViewController as? SearchAsyncViewController {
         upcoming.document = document
-        upcoming.title = "Results for \"\(searchTerm)\""
+        //upcoming.title = "Results for \"\(String(describing: searchTerm))\""
         upcoming.searchTerm = searchTerm
         upcoming.searchResults = searchResults
         print("going to search results")
+        }
       }
     }
 
-    if identifier == "SearchAsyncSegue" {
-      if let upcoming = segue.destination as? SearchAsyncViewController {
+    if identifier == "SearchSegue" {
+      if let upcoming = segue.destination as? SearchResultsViewController {
         upcoming.document = document
-        upcoming.title = "Results for \"\(searchTerm)\""
+        upcoming.title = "Results for \"\(String(describing: searchTerm))\""
         upcoming.searchTerm = searchTerm
         upcoming.searchResults = searchResults
         print("going to search results")
